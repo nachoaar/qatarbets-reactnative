@@ -1,15 +1,13 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-
-// login screen
-import LoginScreen from './src/screens/LoginScreen';
-
-
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View } from 'react-native';
+import { LandingPage } from './src/Components/LandingPage/LandingPage'
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <LoginScreen />
+      <StatusBar style="auto" />
+      <LandingPage />
     </View>
   );
 }
