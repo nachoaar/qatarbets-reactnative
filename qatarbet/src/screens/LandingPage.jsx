@@ -1,8 +1,8 @@
 import React from "react";
 import { StyleSheet, Image, Text, TouchableOpacity, View } from "react-native";
-import logo from '../media/logo.png'
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Logo from '../media/Logo.png'
+// import { NavigationContainer } from '@react-navigation/native';
+// import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
 const LandingPage = ({ navigation }) => {
@@ -10,8 +10,8 @@ const LandingPage = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Image
-      source={logo}
-      style={ {height: 250, width: 250, resizeMode: 'contain' } } />
+        source={Logo}
+        style={ {height: 250, width: 250, resizeMode: 'contain' } } />
       <TouchableOpacity
         onPress={() => {
           navigation.navigate('Login')
@@ -24,7 +24,7 @@ const LandingPage = ({ navigation }) => {
   )
 }
 
-export default LandingPage
+export default LandingPage;
 
 
 const styles = StyleSheet.create({
