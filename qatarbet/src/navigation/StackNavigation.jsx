@@ -8,7 +8,7 @@ import LoginScreen from '../screens/LoginScreen'
 
 const Stack = createNativeStackNavigator()
 
-const Navigation = () => {
+const StackNavigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -20,6 +20,7 @@ const Navigation = () => {
         />
 
         <Stack.Screen 
+          options={{title: null, headerTransparent: true }}
           name='Login'
           component= { LoginScreen }
         />
@@ -29,4 +30,4 @@ const Navigation = () => {
   )
 }
 
-export default Navigation
+export default StackNavigation
