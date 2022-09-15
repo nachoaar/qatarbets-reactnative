@@ -3,11 +3,25 @@ import { StyleSheet, View } from 'react-native';
 
 import Navigation from './src/navigation/Navigation';
 
-function App() {
+import { Provider } from 'react-redux';
+import store from './src/redux/store';
+
+
+
+export default function App() {
+
+  const RootApp = () => {
+    return (
+      <View style={styles.container}>
+        <Navigation />
+      </View>
+    )
+  }
+
   return (
-    <View style={styles.container}>
-      <Navigation />
-    </View>
+    <Provider store={store}>
+      <RootApp />
+    </Provider>
   );
 }
 
@@ -17,5 +31,3 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
 });
-
-export default App;
