@@ -1,11 +1,10 @@
 import React from "react";
 import { Formik, useField } from "formik";
-import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
-
+import { View, StyleSheet, TouchableOpacity, Text, Alert } from 'react-native';
 import StyledTextInput from "./styled-screen/StyledTextInput";
 import StyledTouchableOpacity from "./styled-screen/StyledTouchableOpacity";
-
 import { loginValidationSchema } from "../validation-schemas/login.js";
+import { loginUser } from "../controller/loginController"
 
 const initialValues = {
   email: '',
@@ -30,10 +29,23 @@ const FormikInputValue = ({ name, ...props}) => {
   )
 }
 
+const onPressSubmite = async (input) => {
+  const { email, pass } = input;
+  const messsage = await loginUser({email, pass})
+  if(messsage.error){
+    Alert.alert(
+      'ERROR',
+      messsage.error,
+      [
+        { text: "OK", onPress: () => console.log("OK Pressed") }
+      ]
+    )
+  }
+}
 
 export default function LoginScreen ({navigation}) {
   return (
-    <Formik validationSchema={loginValidationSchema} initialValues={initialValues} onSubmit={values => console.log(values)}>
+    <Formik validationSchema={loginValidationSchema} initialValues={initialValues} onSubmit={onPressSubmite}>
       {({handleSubmit}) => {
         return (
           <View style={styles.container}>
