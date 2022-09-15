@@ -30,7 +30,7 @@ const FormikInputValue = ({ name, ...props}) => {
 }
 
 
-export default function LoginScreen () {
+export default function LoginScreen ({navigation}) {
   return (
     <Formik validationSchema={loginValidationSchema} initialValues={initialValues} onSubmit={values => console.log(values)}>
       {({handleSubmit}) => {
