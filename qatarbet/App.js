@@ -1,13 +1,7 @@
 import React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import LandingPage from './src/screens/LandingPage';
-
-
-
+import { StyleSheet, View } from 'react-native';
 
 import Navigation from './src/navigation/Navigation';
-import LoginScreen from './src/screens/LoginScreen';
 
 function App() {
   return (
