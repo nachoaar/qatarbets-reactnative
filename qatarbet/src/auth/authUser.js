@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const addStoreData = async (value) => {
   try {
     const jsonValue = JSON.stringify(value)
-    await AsyncStorage.setItem('UserKey', jsonValue)
+    const rest = await AsyncStorage.setItem('UserToken', jsonValue)
   } catch (error) {
     console.log(error);
   }
@@ -16,7 +16,7 @@ const addStoreData = async (value) => {
 // se encuentran datos para la clave dada, o devuelve nulllo contrario.
 const getStoreData = async () => {
   try {
-    const jsonValue = await AsyncStorage.getItem('UserKey')
+    const jsonValue = await AsyncStorage.getItem('UserToken')
     return jsonValue != null ? JSON.parse(jsonValue) : null;
   } catch (error) {
     console.log(error);
