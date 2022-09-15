@@ -1,19 +1,27 @@
 import React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import LandingPage from './src/screens/LandingPage';
-
-
-
+import { StyleSheet, View } from 'react-native';
 
 import Navigation from './src/navigation/Navigation';
-import LoginScreen from './src/screens/LoginScreen';
 
-function App() {
+import { Provider } from 'react-redux';
+import store from './src/redux/store';
+
+
+
+export default function App() {
+
+  const RootApp = () => {
+    return (
+      <View style={styles.container}>
+        <Navigation />
+      </View>
+    )
+  }
+
   return (
-    <View style={styles.container}>
-      <Navigation />
-    </View>
+    <Provider store={store}>
+      <RootApp />
+    </Provider>
   );
 }
 
@@ -23,5 +31,3 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
 });
-
-export default App;

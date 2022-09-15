@@ -3,6 +3,7 @@ import { Formik, useField } from "formik";
 import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
 
 import StyledTextInput from "./styled-screen/StyledTextInput";
+import StyledTouchableOpacity from "./styled-screen/StyledTouchableOpacity";
 
 import { loginValidationSchema } from "../validation-schemas/login.js";
 
@@ -35,12 +36,12 @@ export default function LoginScreen ({navigation}) {
     <Formik validationSchema={loginValidationSchema} initialValues={initialValues} onSubmit={values => console.log(values)}>
       {({handleSubmit}) => {
         return (
-          <View>
+          <View style={styles.container}>
             <Text style={styles.title}>¡Bienvenido!</Text>
-            <View style={styles.container}>
+            <View style={styles.login}>
               <FormikInputValue
                 name='email'
-                placeholder='Correo Electrinico'
+                placeholder='Correo electrónico'
               />
               <FormikInputValue
                 name='pass'
@@ -48,12 +49,11 @@ export default function LoginScreen ({navigation}) {
                 secureTextEntry
                 />
             </View>
-            <TouchableOpacity
+            <StyledTouchableOpacity
               onPress={handleSubmit}
-              style={styles.touchableOpacity}
             >
               <Text style={{color: '#7A7A7A'}}>Ingresar</Text>
-            </TouchableOpacity>
+            </StyledTouchableOpacity>
           </View>
         )
       }}
@@ -65,6 +65,12 @@ export default function LoginScreen ({navigation}) {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'white'
+  },
+  login: {
     borderWidth: 1,
     borderColor: '#E2E8F0',
     padding: 20,
@@ -79,15 +85,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 30,
-    textAlign: 'center'
-  },
-  touchableOpacity: {
-    borderWidth: 2,
-    borderColor: "#FF003F",
-    width: 150,
-    alignItems: "center",
-    padding: 15,
-    borderRadius: 50,
-    alignSelf: 'center'
-  },
+    textAlign: 'center',
+    color: '#FF003F'
+  }
 })
