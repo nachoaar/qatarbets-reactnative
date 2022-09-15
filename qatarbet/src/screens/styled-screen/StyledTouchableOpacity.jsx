@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 50,
     alignSelf: 'center'
-  }
+  },
 })
 
 const StyledTouchableOpacity = ({ style = {}, ...props}) => {

@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Image, Text, TouchableOpacity, View } from "react-native";
-import Logo from '../media/Logo.png'
+import Logo from "../../assets/logo.png"
+
 
 import StyledTouchableOpacity from "./styled-screen/StyledTouchableOpacity";
 

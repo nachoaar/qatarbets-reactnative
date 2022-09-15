@@ -1,7 +1,9 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import Navigation from './src/navigation/Navigation';
+import StackNavigation from './src/navigation/StackNavigation';
+import TabNavigation from './src/navigation/TabNavigation';
+
 
 import { Provider } from 'react-redux';
 import store from './src/redux/store';
@@ -13,7 +15,8 @@ export default function App() {
   const RootApp = () => {
     return (
       <View style={styles.container}>
-        <Navigation />
+        {/* <StackNavigation /> */}
+        <TabNavigation />
       </View>
     )
   }
