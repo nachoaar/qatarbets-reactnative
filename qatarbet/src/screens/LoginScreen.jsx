@@ -1,6 +1,6 @@
 import React from "react";
 import { Formik, useField } from "formik";
-import { View, StyleSheet, Text, Button } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
 
 import StyledTextInput from "./styled-screen/StyledTextInput";
 
@@ -8,17 +8,17 @@ import { loginValidationSchema } from "../validation-schemas/login.js";
 
 const initialValues = {
   email: '',
-  password: ''
+  pass: ''
 }
 
 
 const FormikInputValue = ({ name, ...props}) => {
-  
+
   const [field, meta, helpers] = useField(name)
-  
+
   return (
     <>
-    <StyledTextInput 
+    <StyledTextInput
       error={meta.error}
       value={field.value}
       onChangeText={value => helpers.setValue(value)}
@@ -38,17 +38,22 @@ export default function LoginScreen ({navigation}) {
           <View>
             <Text style={styles.title}>¡Bienvenido!</Text>
             <View style={styles.container}>
-              <FormikInputValue 
+              <FormikInputValue
                 name='email'
-                placeholder='E-mail'
+                placeholder='Correo Electrinico'
               />
               <FormikInputValue
-                name='password'
-                placeholder='Password'
+                name='pass'
+                placeholder='Contraseña'
                 secureTextEntry
                 />
             </View>
-            <Button color="#D20A46" onPress={handleSubmit} title='Ingresar' />
+            <TouchableOpacity
+              onPress={handleSubmit}
+              style={styles.touchableOpacity}
+            >
+              <Text style={{color: '#7A7A7A'}}>Ingresar</Text>
+            </TouchableOpacity>
           </View>
         )
       }}
@@ -75,5 +80,14 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     textAlign: 'center'
-  }
+  },
+  touchableOpacity: {
+    borderWidth: 2,
+    borderColor: "#FF003F",
+    width: 150,
+    alignItems: "center",
+    padding: 15,
+    borderRadius: 50,
+    alignSelf: 'center'
+  },
 })
