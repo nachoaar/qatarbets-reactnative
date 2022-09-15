@@ -7,6 +7,6 @@ export const loginValidationSchema = yup.object().shape({
     .required('E-mail es requerido'),
   password: yup
     .string()
-    .max(500, 'Muy largo!')
+    .max(50, 'Muy largo!')
     .required('Contraseña es requerido')
 })
