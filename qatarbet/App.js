@@ -15,8 +15,9 @@ export default function App() {
   const RootApp = () => {
     return (
       <View style={styles.container}>
-        {/* <StackNavigation /> */}
-        <TabNavigation />
+        <StackNavigation />
+        {/* Dejo TabNavigation comentado para poder ir trabajando mientras se desarrolla el login */}
+        {/* <TabNavigation /> */}
       </View>
     )
   }
