@@ -1,19 +1,31 @@
 import React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import LandingPage from './src/screens/LandingPage';
+import { StyleSheet, View } from 'react-native';
+
+import StackNavigation from './src/navigation/StackNavigation';
+import TabNavigation from './src/navigation/TabNavigation';
+
+
+import { Provider } from 'react-redux';
+import store from './src/redux/store';
 
 
 
+export default function App() {
 
-import Navigation from './src/navigation/Navigation';
-import LoginScreen from './src/screens/LoginScreen';
+  const RootApp = () => {
+    return (
+      <View style={styles.container}>
+        <StackNavigation />
+        {/* Dejo TabNavigation comentado para poder ir trabajando mientras se desarrolla el login */}
+        {/* <TabNavigation /> */}
+      </View>
+    )
+  }
 
-function App() {
   return (
-    <View style={styles.container}>
-      <Navigation />
-    </View>
+    <Provider store={store}>
+      <RootApp />
+    </Provider>
   );
 }
 
@@ -23,5 +35,3 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
 });
-
-export default App;
