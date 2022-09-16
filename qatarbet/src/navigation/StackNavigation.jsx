@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import LandingPage from '../screens/LandingPage'
 import LoginScreen from '../screens/LoginScreen'
 
+import TabNavigation from '../navigation/TabNavigation'
 
 const Stack = createNativeStackNavigator()
 
@@ -23,6 +24,12 @@ const StackNavigation = () => {
           options={{title: null, headerTransparent: true }}
           name='Login'
           component= { LoginScreen }
+        />
+
+        <Stack.Screen 
+          options={{headerShown: false}}
+          name='TabNavigation'
+          component= { TabNavigation }
         />
         
       </Stack.Navigator>

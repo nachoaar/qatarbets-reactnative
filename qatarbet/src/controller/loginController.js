@@ -10,7 +10,8 @@ export const loginUser = async ({email, pass}) => {
     }
     if(logUser.data){
       const { avatar, name, rol, token} = logUser.data;
-      authUser.addStoreData(token) // aca guardo en el asyncStorage el token del usuario
+      authUser.addStoreData(token);
+      return logUser.data // aca guardo en el asyncStorage el token del usuario
       // aca iria el dispach para cargar el estado del usuario en redux
     }
 

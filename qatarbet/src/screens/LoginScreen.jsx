@@ -29,23 +29,26 @@ const FormikInputValue = ({ name, ...props}) => {
   )
 }
 
-const onPressSubmite = async (input) => {
+const onPressSubmite = async (input, navigation) => {
   const { email, pass } = input;
-  const messsage = await loginUser({email, pass})
-  if(messsage.error){
+  const message = await loginUser({email, pass})
+  if(message.error){
+    // resetForm();
     Alert.alert(
       'ERROR',
-      messsage.error,
+      message.error,
       [
         { text: "OK", onPress: () => console.log("OK Pressed") }
       ]
-    )
+    )   
+  } else {
+    navigation.navigate('TabNavigation')
   }
 }
 
 export default function LoginScreen ({navigation}) {
   return (
-    <Formik validationSchema={loginValidationSchema} initialValues={initialValues} onSubmit={onPressSubmite}>
+    <Formik validationSchema={loginValidationSchema} initialValues={initialValues} onSubmit={(e) => onPressSubmite(e, navigation)}>
       {({handleSubmit}) => {
         return (
           <View style={styles.container}>

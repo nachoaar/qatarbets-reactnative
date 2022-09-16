@@ -3,22 +3,17 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Icon from "react-native-vector-icons/FontAwesome5";
 
-
-import { Text } from 'react-native'
-
 import UserScreen from '../screens/UserScreen'
 import BetScreen from '../screens/BetScreen'
 import MatchScreen from '../screens/MatchScreen'
 import Search from '../components/Search';
-
-
 
 const Tab = createBottomTabNavigator()
 
 const TabNavigation = () => {
 
   return (
-    <NavigationContainer>
+    <NavigationContainer independent={true}>
       <Search />
       <Tab.Navigator>
         <Tab.Screen
