@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import user from "./reducer/userSlice";
+import gambler from "./reducer/gamblerSlice";
 
 
 export default configureStore({
   reducer: {
-    user
+    gambler
   }
 })
