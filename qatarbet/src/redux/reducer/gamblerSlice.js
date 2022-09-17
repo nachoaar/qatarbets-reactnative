@@ -4,15 +4,15 @@ export const gamblerSlice = createSlice({
   name: "gambler",
   initialState: {
     gamblers: [],
-    GamblerId: {},
+    gamblerId: {},
     gamblerName: {}
   },
-  reducer: {
+  reducers: {
     Gambler: (state, action) => {
       state.gamblers = action.payload
     },
     GamblerId: (state, action) => {
-      state.GamblerId = action.payload
+      state.gamblerId = action.payload
     },
     GamblerName: (state, action) => {
       let gamblerByName = state.gamblers.find((g) => g.name === action.payload)
