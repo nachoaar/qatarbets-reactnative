@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Icon from "react-native-vector-icons/FontAwesome5";
 
-import UserScreen from '../screens/UserScreen'
+import GamblerScreen from '../screens/GamblerScreen'
 import BetScreen from '../screens/BetScreen'
 import MatchScreen from '../screens/MatchScreen'
 import Search from '../components/Search';
@@ -27,8 +27,8 @@ const TabNavigation = () => {
         />
 
         <Tab.Screen
-          name='Users'
-          component= { UserScreen }
+          name='Gambler'
+          component= { GamblerScreen }
           options={{
             tabBarIcon: ({color, size}) => (
               <Icon  name="user" color={color} size={size} />
@@ -45,7 +45,7 @@ const TabNavigation = () => {
             )
           }}
         />
-        
+
       </Tab.Navigator>
     </NavigationContainer>
   )
