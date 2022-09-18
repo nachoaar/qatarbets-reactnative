@@ -50,7 +50,6 @@ export default function LoginScreen ({navigation}) {
       )
     } else {
       const info = await authUser.getStoreData();
-      console.log('login', info);
       navigation.navigate('TabNavigation');
     }
   }

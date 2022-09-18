@@ -13,7 +13,7 @@ export const loginUser = ({email, pass}) => {
       }
       if (logUser.data) {
         const { avatar, name, rol, token} = logUser.data;
-        authUser.addStoreData(token);
+        await authUser.addStoreData(token);
         dispatch(User({avatar, name, rol}))
         return logUser.data
       }
@@ -28,11 +28,11 @@ export const logout = () => {
     try {
       const keyUser = await authUser.getStoreData();
       if(keyUser){
-        await authUser.removeStoreData(keyUser)
+        await authUser.removeStoreData('UserToken')
         dispatch(RemoveUser())
-      }  
+      }
     } catch (error) {
-      console.log(error);  
+      console.log(error);
     }
   }
 }

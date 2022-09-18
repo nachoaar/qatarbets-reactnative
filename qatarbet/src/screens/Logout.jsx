@@ -11,7 +11,6 @@ export const Logout = () => {
 const onPressFunction = async () => {
   dispatch(logout())
   const info = await authUser.getStoreData();
-  console.log('logout: ', info)
 }
 
   return (
