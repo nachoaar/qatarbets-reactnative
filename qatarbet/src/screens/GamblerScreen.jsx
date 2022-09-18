@@ -5,9 +5,8 @@ import { Text, View, FlatList, Image, StyleSheet, Pressable } from "react-native
 import { getGamblers, cacheDashGambler } from '../redux/actions/gambler/gamblerActions'
 import { ModalVisible } from './modal'
 import { getBets } from "../redux/actions/bet/betActions";
+import GamblerList from "../components/gambler-components/GamblerList";
 // import { Graph } from './graph/Graph'
-
-
 
 export default function UserScreen () {
 
@@ -15,9 +14,9 @@ export default function UserScreen () {
   const [modalEntry, setModalEntry] = useState();
 
   const dispatch = useDispatch();
-  const { gamblers } = useSelector((store) => store.gambler)
+  const gamblers = useSelector((store) => store.gambler?.gamblers)
   const { gamblerName } = useSelector((store) => store.gambler)
-  const { bets } = useSelector((store) => store.bet)
+  const bets = useSelector((store) => store.bet?.bets)
 
   useEffect(() => {
     if(bets.length === 0){
@@ -32,9 +31,12 @@ export default function UserScreen () {
   }, [dispatch, gamblers])
 
   return (
-    <View>
-      <Text>Usuarios</Text>
-      <View>
+    <View style={styles.container}>
+      <GamblerList 
+        gamblers={gamblers}
+        bets={bets}
+      />
+      {/* <View>
       <FlatList
         data={gamblers}
         keyExtractor={(item) => item.id}
@@ -73,53 +75,17 @@ export default function UserScreen () {
         onClose={() => setModalVisible(false)}
         /> : null
         }
-      </View>
+      </View> */}
     </View>
   )
 }
 
 
 const styles = StyleSheet.create({
-  centeredView: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 15
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: "white",
-    borderRadius: 10,
-    padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5
-  },
-  button: {
-    borderRadius: 10,
-    padding: 10,
-    elevation: 2
-  },
-  buttonOpen: {
-    backgroundColor: "#F194FF",
-  },
-  buttonClose: {
-    backgroundColor: "#2196F3",
-  },
-  textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center"
-  },
-  modalText: {
-    marginBottom: 10,
-    textAlign: "center"
+  container: {
+    height: '100%',
+    paddingHorizontal: 10,
+    backgroundColor: '#F8F8FA'
   }
 });
 
