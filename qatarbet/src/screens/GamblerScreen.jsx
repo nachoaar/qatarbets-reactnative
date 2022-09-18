@@ -3,9 +3,10 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Text, View, FlatList, Image, StyleSheet, Pressable } from "react-native";
 import { getGamblers, cacheDashGambler } from '../redux/actions/gambler/gamblerActions'
-import { getAllBets } from '../redux/actions/bet/betAction';
 import { ModalVisible } from './modal'
+import { getBets } from "../redux/actions/bet/betActions";
 // import { Graph } from './graph/Graph'
+
 
 
 export default function UserScreen () {
@@ -16,11 +17,11 @@ export default function UserScreen () {
   const dispatch = useDispatch();
   const { gamblers } = useSelector((store) => store.gambler)
   const { gamblerName } = useSelector((store) => store.gambler)
-  const { bets } = useSelector((store) => store.bets)
+  const { bets } = useSelector((store) => store.bet)
 
   useEffect(() => {
     if(bets.length === 0){
-      dispatch(getAllBets())
+      dispatch(getBets())
     }
     if(gamblers.length === 0){
       dispatch(getGamblers());

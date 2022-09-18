@@ -7,6 +7,8 @@ import StyledTouchableOpacity from "./styled-screen/StyledTouchableOpacity";
 import { loginValidationSchema } from "../validation-schemas/login.js";
 import { loginUser } from "../redux/actions/user/userActions"
 
+import { authUser } from "../redux/actions/user/authUser";
+
 const initialValues = {
   email: '',
   pass: ''
@@ -35,11 +37,10 @@ export default function LoginScreen ({navigation}) {
 
   const dispatch = useDispatch();
 
-  const onPressSubmite = (input, navigation) => {
+  const onPressSubmite = async (input, navigation) => {
     const { email, pass } = input;
-    dispatch(loginUser({email, pass}))
+    const message = dispatch(loginUser({email, pass}))
     if(message.error){
-      // resetForm();
       Alert.alert(
         'ERROR',
         message.error,
@@ -48,7 +49,9 @@ export default function LoginScreen ({navigation}) {
         ]
       )
     } else {
-      navigation.navigate('TabNavigation')
+      const info = await authUser.getStoreData();
+      console.log('login', info);
+      navigation.navigate('TabNavigation');
     }
   }
 
@@ -67,7 +70,7 @@ export default function LoginScreen ({navigation}) {
                 name='pass'
                 placeholder='Contraseña'
                 secureTextEntry
-                />
+              />
             </View>
             <StyledTouchableOpacity
               onPress={handleSubmit}

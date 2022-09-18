@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { Logout } from "../screens/Logout";
 
 import Searchbar from "./Searchbar";
 
@@ -10,7 +11,7 @@ export default function Header () {
     <>
       <View style={styles.container}>
         <Text style={styles.text}>Bienvenido, Ignacio</Text>
-        <Text>Menu para logout</Text>
+        <Logout />
       </View>
       <Searchbar />
     </>
