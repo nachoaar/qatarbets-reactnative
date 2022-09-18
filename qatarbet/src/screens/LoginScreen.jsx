@@ -1,10 +1,11 @@
 import React from "react";
 import { Formik, useField } from "formik";
-import { View, StyleSheet, TouchableOpacity, Text, Alert } from 'react-native';
+import { useDispatch } from "react-redux";
+import { View, StyleSheet, Text, Alert } from 'react-native';
 import StyledTextInput from "./styled-screen/StyledTextInput";
 import StyledTouchableOpacity from "./styled-screen/StyledTouchableOpacity";
 import { loginValidationSchema } from "../validation-schemas/login.js";
-import { loginUser } from "../controller/loginController"
+import { loginUser } from "../redux/actions/user/userActions"
 
 const initialValues = {
   email: '',
@@ -29,24 +30,28 @@ const FormikInputValue = ({ name, ...props}) => {
   )
 }
 
-const onPressSubmite = async (input, navigation) => {
-  const { email, pass } = input;
-  const message = await loginUser({email, pass})
-  if(message.error){
-    // resetForm();
-    Alert.alert(
-      'ERROR',
-      message.error,
-      [
-        { text: "OK", onPress: () => console.log("OK Pressed") }
-      ]
-    )   
-  } else {
-    navigation.navigate('TabNavigation')
-  }
-}
 
 export default function LoginScreen ({navigation}) {
+
+  const dispatch = useDispatch();
+
+  const onPressSubmite = (input, navigation) => {
+    const { email, pass } = input;
+    dispatch(loginUser({email, pass}))
+    if(message.error){
+      // resetForm();
+      Alert.alert(
+        'ERROR',
+        message.error,
+        [
+          { text: "OK", onPress: () => console.log("OK Pressed") }
+        ]
+      )
+    } else {
+      navigation.navigate('TabNavigation')
+    }
+  }
+
   return (
     <Formik validationSchema={loginValidationSchema} initialValues={initialValues} onSubmit={(e) => onPressSubmite(e, navigation)}>
       {({handleSubmit}) => {
@@ -75,8 +80,6 @@ export default function LoginScreen ({navigation}) {
     </Formik>
   )
 }
-
-
 
 const styles = StyleSheet.create({
   container: {
