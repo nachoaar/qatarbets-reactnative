@@ -2,16 +2,16 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 export const betSlice = createSlice({
-  name: "bets",
+  name: "bet",
   initialState: {
     bets: []
   },
   reducers: {
-    AllBets: (state, action) => {
+    Bet: (state, action) => {
       state.bets = action.payload
     }
   }
 })
 
-export const { AllBets } = betSlice.actions;
+export const { Bet } = betSlice.actions;
 export default betSlice.reducer;
