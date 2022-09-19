@@ -14,7 +14,7 @@ export default function MatchScreen() {
   console.log(matches);
 
   useEffect(() => {
-    dispatch(getMatches);
+    dispatch(getMatches());
   }, [])
 
   return (
