@@ -6,7 +6,10 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 import GamblerScreen from '../screens/GamblerScreen'
 import BetScreen from '../screens/BetScreen'
 import MatchScreen from '../screens/MatchScreen'
-import Search from '../components/Search';
+import Header from '../components/Header';
+
+import { setStatusBarStyle, StatusBar } from 'expo-status-bar';
+
 
 const Tab = createBottomTabNavigator()
 
@@ -14,8 +17,12 @@ const TabNavigation = () => {
 
   return (
     <NavigationContainer independent={true}>
-      <Search />
-      <Tab.Navigator>
+      <Header />
+      <Tab.Navigator
+        screenOptions={{
+          headerShown: false
+        }}
+      >
         <Tab.Screen
           name='Match'
           component= { MatchScreen }
