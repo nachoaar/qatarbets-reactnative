@@ -1,11 +1,9 @@
 import React from "react";
-import { useState } from "react";
 import { useEffect } from "react";
 import { View, StyleSheet } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 
 import BetList from "../components/bet-components/BetList";
-import BetModal from "../components/bet-components/BetModal";
 import { getBets } from "../redux/actions/bet/betActions";
 
 
@@ -13,13 +11,15 @@ export default function BetScreen () {
 
   const dispatch = useDispatch();
 
-  const bets = useSelector((store) => store.bet?.bets);
+  const bets = useSelector((store) => store.bets?.bets);
 
   useEffect(() => {
     if(bets.length === 0) {
       dispatch(getBets());
     }
   },[]);
+
+  console.log(bets.length);
 
   return (
     <View style={styles.container}>

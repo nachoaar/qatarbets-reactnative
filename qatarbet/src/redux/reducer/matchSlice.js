@@ -1,16 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { matches: [] }
-
 export const matchSlice = createSlice({
     name: 'match',
-    initialState,
+    initialState: {
+        matches: [],
+        matchId: {}
+    },
     reducers: {
-        matches(state, action) {
+        getMatch: (state, action) => {
             state.matches = action.payload
+        },
+        getMatchId: (state, action) => {
+            state.matchId = action.payload
         }
     }
 })
 
-export const { matches } = matchSlice.actions;
+export const { getMatch, getMatchId } = matchSlice.actions;
 export default matchSlice.reducer;

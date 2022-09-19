@@ -2,28 +2,34 @@ import React from 'react'
 import { Text, View, StyleSheet, TouchableWithoutFeedback } from 'react-native'
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getGamblerId } from "../../redux/actions/gambler/gamblerActions";
+import { cacheDashGambler, getGamblerId } from "../../redux/actions/gambler/gamblerActions";
 import BetModal from './BetModal';
 import { useState } from 'react';
+import { matchId } from '../../redux/actions/match/matchAction';
 
 
 export default function BetCard(props) {
 
-  // console.log('id usuarios >>>>', props.userId);
+  console.log('id usuarios >>>>', props.userId);
+
+
+  const dispatch = useDispatch();
+
+  const gambler = useSelector((store) => store.gambler?.gamblerId)
+  const matchById = useSelector((store) => store.matches?.matchId)
+
+  useEffect(() => {
+    dispatch(getGamblerId(props.userId))
+    dispatch(matchId(props.matchId))
+  },[])
+
+  useEffect(() => {
+    return () => {
+      dispatch(cacheDashGambler());
+    }
+  },[dispatch])
 
   const [modalOpen, setModalOpen] = useState(false);
-
-  // const dispatch = useDispatch();
-
-  // const {gamblerId} = useSelector((store) => store.gambler)
-
-  // useEffect(() => {
-  //   if(props.userId === null) {
-  //     dispatch(getGamblerId('406a59ce-bc66-4a32-a52f-e8517f73342c'));
-  //   } else {
-  //     dispatch(getGamblerId(props.userId));
-  //   }
-  // },[dispatch, props.userId])
 
   const handleOnPress = (e) => {
     e.preventDefault();
@@ -41,8 +47,8 @@ export default function BetCard(props) {
           <View style={styles.spacing}>
             <View style={styles.bgStyle}>
             {/* <Text style={styles.condition}>{!user ? 'Usuario' : user[0]?.name}</Text> */}
-              <Text style={styles.condition}>a</Text>
-              <Text>Home vs Away</Text>
+              <Text style={styles.condition}>{gambler[0]?.name}</Text>
+              <Text>{`${matchById[0]?.home_team?.name} vs ${matchById[0]?.away_team?.name}`}</Text>
               <Text style={{color: props.final_profit > 0 ? 'green' : 'red'}}>{props.final_profit > 0 ? 'Win' : 'Lose'}</Text>
             </View>
           </View>

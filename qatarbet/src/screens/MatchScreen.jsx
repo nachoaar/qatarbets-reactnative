@@ -1,26 +1,38 @@
-import axios from "axios";
 import React, { useEffect } from "react";
-import { Text, View } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
+import MatchList from "../components/match-components/MatchList";
 import { getMatches } from "../redux/actions/match/matchAction"
 
 
 export default function MatchScreen() {
 
-  const {matches} = useSelector((store) => store.matches);
-  console.log(matches);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   
-  console.log(matches);
+  const matchs = useSelector((store) => store.matches?.matches);
 
   useEffect(() => {
-    dispatch(getMatches());
-  }, [])
+    if (matchs.length === 0) {
+      dispatch(getMatches());
+    }
+  },[]);
+
+  console.log(matchs.length);
 
   return (
-    <View>
-      <Text>Hola soy Match</Text>
+    <View style={styles.container}>
+      <MatchList 
+        matchs={matchs}
+      />
     </View>
   )
 
 }
+
+const styles = StyleSheet.create({
+  container: {
+    height: '100%',
+    paddingHorizontal: 10,
+    backgroundColor: '#F8F8FA'
+  }
+})
