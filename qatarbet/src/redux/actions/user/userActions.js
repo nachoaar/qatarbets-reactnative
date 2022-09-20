@@ -7,7 +7,7 @@ export const loginUser = ({email, pass}) => {
   return async function (dispatch) {
     const dataUser = {email, pass}
     try {
-      const logUser = await axios.post('https://qatarbets-backend-production-ab54.up.railway.app/user/login/mobile',dataUser, {withCredentials: true} );
+      const logUser = await axios.post('https://qatarbets-backend-production.up.railway.app/user/login/mobile',dataUser, {withCredentials: true} );
       if (logUser.data.hasOwnProperty('error')) {
         return logUser.data
       }
