@@ -1,9 +1,9 @@
 import axios from "axios";
-import { matches } from "../../reducer/matchSlice";
+import { matches, matchesFinished, matchesNotStarted, allMatches } from "../../reducer/matchSlice";
 
 
 export const getMatches = () => {
-return async function (dispatch) {
+  return async function (dispatch) {
     try {
         const apiMostBet = await axios.get('https://qatarbets-backend-production-ab54.up.railway.app/fixture/get');
         const apiMostBetMatches = apiMostBet.data
@@ -12,5 +12,19 @@ return async function (dispatch) {
     } catch (error) {
         console.error(error);
     }
+  }
 }
+
+export const filterMatchesStatus = (payload) => {
+  return async function (dispatch) {
+    if(payload === "Finished"){
+      dispatch(matchesFinished(payload))
+    }
+    if(payload === "Not Started"){
+      dispatch(matchesNotStarted(payload))
+    }
+    if(payload === "All Matches"){
+      dispatch(allMatches(payload))
+    }
+  }
 }
