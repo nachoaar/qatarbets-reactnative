@@ -8,7 +8,6 @@ import { getMatches, filterMatchesStatus } from "../redux/actions/match/matchAct
 export default function MatchScreen() {
 
   const {matches} = useSelector((store) => store.matches);
-  console.log(matches);
   const dispatch = useDispatch()
 
   const onPressFinished = () => {
@@ -29,7 +28,7 @@ export default function MatchScreen() {
 
   return (
     <View>
-      <Pressable onPress={onPressFinished}>
+      <Pressable  onPress={onPressFinished}>
         <Text>Finished</Text>
       </Pressable>
       <Pressable onPress={onPressNotStarted}>
