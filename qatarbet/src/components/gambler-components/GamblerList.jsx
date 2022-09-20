@@ -1,8 +1,16 @@
-import { View, Text, StyleSheet, FlatList } from 'react-native'
+import { View, Text, StyleSheet, FlatList, Pressable } from 'react-native'
 import React from 'react'
 import GamblerCard from './GamblerCard';
+import { cacheDashGambler } from '../../redux/actions/gambler/gamblerActions';
+import { useDispatch } from 'react-redux';
 
 export default function GamblerList(props) {
+
+  const dispatch = useDispatch();
+
+  const onPressSubmiteCache = async () => {
+    dispatch(cacheDashGambler())
+  }
 
   return (
     <>
@@ -12,6 +20,13 @@ export default function GamblerList(props) {
           <View style={styles.num}>
             <Text>{props.gamblers?.length}</Text>
           </View>
+        </View>
+        <View>
+          <Pressable
+            onPress={() => onPressSubmiteCache()}
+          >
+            <Text>All</Text>
+          </Pressable>
         </View>
       </View>
       <FlatList 

@@ -4,13 +4,15 @@ import { useDispatch } from 'react-redux'
 import { authUser } from '../redux/actions/user/authUser'
 import { logout } from '../redux/actions/user/userActions'
 
-export const Logout = () => {
+export const Logout = ({navigation}) => {
 
   const dispatch = useDispatch()
 
 const onPressFunction = async () => {
   dispatch(logout())
   const info = await authUser.getStoreData();
+  console.log(info);
+  navigation.navigate('Landing');
 }
 
   return (

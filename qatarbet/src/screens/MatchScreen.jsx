@@ -1,43 +1,41 @@
 import React, { useEffect } from "react";
 
-import { Text, View, StyleSheet, Pressable } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import MatchList from "../components/match-components/MatchList";
-import { getMatches, filterMatchesStatus } from "../redux/actions/match/matchAction"
+import { getMatches} from "../redux/actions/match/matchAction"
 
 
 
 export default function MatchScreen() {
 
-  const {matches} = useSelector((store) => store.matches);
+  const {filtered} = useSelector((store) => store.matches);
   const dispatch = useDispatch()
 
-  const onPressFinished = () => {
-    dispatch(filterMatchesStatus("Finished"))
-  }
+  // const onPressFinished = () => {
+  //   dispatch(filterMatchesStatus("Finished"))
+  // }
 
-  const onPressNotStarted = () => {
-    dispatch(filterMatchesStatus("Not Started"))
-  }
+  // const onPressNotStarted = () => {
+  //   dispatch(filterMatchesStatus("Not Started"))
+  // }
 
-  const onPressAllMatches = () => {
-    dispatch(filterMatchesStatus("All Matches"))
-  }
+  // const onPressAllMatches = () => {
+  //   dispatch(filterMatchesStatus("All Matches"))
+  // }
 
   useEffect(() => {
-    if (matchs.length === 0) {
       dispatch(getMatches());
-    }
   },[]);
 
-  console.log(matchs.length);
+  console.log(filtered.length);
 
   return (
     <View style={styles.container}>
       <MatchList 
-        matchs={matchs}
+        matchs={filtered}
       />
-      <Pressable  onPress={onPressFinished}>
+      {/* <Pressable  onPress={onPressFinished}>
         <Text>Finished</Text>
       </Pressable>
       <Pressable onPress={onPressNotStarted}>
@@ -46,7 +44,7 @@ export default function MatchScreen() {
       <Pressable onPress={onPressAllMatches}>
         <Text>All Matches</Text>
       </Pressable>
-      <Text>Hola soy Match</Text>
+      <Text>Hola soy Match</Text> */}
     </View>
   )
 
