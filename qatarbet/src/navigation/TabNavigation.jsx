@@ -6,23 +6,41 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 import GamblerScreen from '../screens/GamblerScreen'
 import BetScreen from '../screens/BetScreen'
 import MatchScreen from '../screens/MatchScreen'
-import Header from '../components/Header';
 
-import { setStatusBarStyle, StatusBar } from 'expo-status-bar';
+import LandingPage from '../screens/LandingPage';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import LoginScreen from '../screens/LoginScreen';
 
 
 const Tab = createBottomTabNavigator()
-
+const Stack = createNativeStackNavigator()
 const TabNavigation = () => {
 
-  return (
+  return ( 
     <NavigationContainer independent={true}>
-      <Header />
       <Tab.Navigator
         screenOptions={{
           headerShown: false
         }}
       >
+        <Tab.Screen
+          name='Landing'
+          component= { LandingPage }
+          options={{
+            tabBarStyle: { display: "none" },
+            tabBarButton: () => null
+          }}
+        />
+
+        <Tab.Screen 
+          options={{
+            tabBarStyle: { display: "none" },
+            tabBarButton: () => null
+          }}
+          name='Login'
+          component={ LoginScreen }
+        />
+        
         <Tab.Screen
           name='Match'
           component= { MatchScreen }

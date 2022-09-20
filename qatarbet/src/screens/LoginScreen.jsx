@@ -49,7 +49,7 @@ export default function LoginScreen ({navigation}) {
       )
     } else {
       const info = await authUser.getStoreData();
-      navigation.navigate('TabNavigation');
+      navigation.navigate('Match');
     }
   }
 

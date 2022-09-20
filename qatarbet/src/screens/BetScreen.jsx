@@ -1,10 +1,8 @@
 import React from "react";
-import { useEffect } from "react";
 import { View, StyleSheet } from "react-native";
-import { useDispatch, useSelector } from "react-redux";
 
 import BetList from "../components/bet-components/BetList";
-import { getBets } from "../redux/actions/bet/betActions";
+import Header from "../components/Header";
 
 
 export default function BetScreen () {
@@ -12,7 +10,8 @@ export default function BetScreen () {
 
   return (
     <View style={styles.container}>
-      <BetList />
+      <Header />
+      <BetList />   
     </View>
   )
 
