@@ -32,14 +32,13 @@ const FormikInputValue = ({ name, ...props}) => {
   )
 }
 
-
 export default function LoginScreen ({navigation}) {
 
   const dispatch = useDispatch();
 
   const onPressSubmite = async (input, navigation) => {
     const { email, pass } = input;
-    const message = dispatch(loginUser({email, pass}))
+    const message = await dispatch(loginUser({email, pass}))
     if(message.error){
       Alert.alert(
         'ERROR',
