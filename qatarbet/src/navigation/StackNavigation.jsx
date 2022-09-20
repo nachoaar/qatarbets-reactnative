@@ -11,7 +11,7 @@ const Stack = createNativeStackNavigator()
 
 const StackNavigation = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer  independent={true}>
       <Stack.Navigator>
 
         <Stack.Screen 

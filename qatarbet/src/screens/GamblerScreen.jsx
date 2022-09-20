@@ -8,6 +8,9 @@ import { getBets } from "../redux/actions/bet/betActions";
 import GamblerList from "../components/gambler-components/GamblerList";
 // import { Graph } from './graph/Graph'
 
+import Searchbar from "../components/Searchbar";
+
+
 export default function UserScreen () {
 
   const dispatch = useDispatch();
@@ -44,6 +47,7 @@ export default function UserScreen () {
 
   return (
     <View style={styles.container}>
+      <Searchbar />
       <GamblerList
         gamblers={gamblerName?.name? [gamblerName] : gamblers}
         bets={bets}

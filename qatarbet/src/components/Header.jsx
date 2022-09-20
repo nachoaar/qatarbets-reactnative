@@ -3,8 +3,6 @@ import { StyleSheet, Text, View } from "react-native";
 import { useSelector } from "react-redux";
 import { Logout } from "../screens/Logout";
 
-import Searchbar from "./Searchbar";
-
 
 export default function Header () {
 
@@ -17,7 +15,6 @@ export default function Header () {
         
         <Logout />
       </View>
-      <Searchbar />
     </>
   )
 

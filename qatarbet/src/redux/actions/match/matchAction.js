@@ -6,7 +6,7 @@ import { getMatch, matchesFinished, matchesNotStarted, allMatches } from "../../
 export const getMatches = () => {
   return async function (dispatch) {
     try {
-        const apiMostBet = await axios.get('https://qatarbets-backend-production-ab54.up.railway.app/fixture/get');
+        const apiMostBet = await axios.get('https://qatarbets-backend-production.up.railway.app/fixture/get');
         const apiMostBetMatches = apiMostBet.data
         dispatch(getMatch(apiMostBetMatches))
         // console.log(apiMostBetMatches);

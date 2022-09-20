@@ -5,7 +5,7 @@ import { Gambler, GamblerId, GamblerName, CacheGambler } from '../../reducer/gam
 export const getGamblers = () => {
   return async function (dispatch) {
     try {
-      const gamblers = await axios.get('https://qatarbets-backend-production-ab54.up.railway.app/user');
+      const gamblers = await axios.get('https://qatarbets-backend-production.up.railway.app/user');
       dispatch(Gambler(gamblers.data));
     } catch (error) {
       console.log('error linea 11', error);
@@ -16,7 +16,7 @@ export const getGamblers = () => {
 export const getGamblerId = (payload) => {
   return async function (dispatch) {
     try {
-      const gamblerId = await axios.get(`https://qatarbets-backend-production-ab54.up.railway.app/user/userId/${payload}`);
+      const gamblerId = await axios.get(`https://qatarbets-backend-production.up.railway.app/user/userId/${payload}`);
       await dispatch(GamblerId(gamblerId.data));
     } catch (error) {
       console.log('error linea 22', error);
