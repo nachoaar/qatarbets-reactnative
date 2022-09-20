@@ -23,8 +23,8 @@ export default function BetList() {
   const [selected, setSelected] = useState('');
 
   const data = [
-    {key:'0-9', value:'Mayor apuesta'},
-    {key:'9-0', value:'Menor apuesta'},
+    {key:'0-9', value:'Mayor Apuesta'},
+    {key:'9-0', value:'Menor Apuesta'},
   ]
 
   const handleOnPress = (e) => {
@@ -47,7 +47,7 @@ export default function BetList() {
         <View style={styles.betNum}>
           <Text>Total de apuestas:</Text>
           <View style={styles.num}>
-            <Text>{bets?.length}</Text>
+            <Text style={{color: 'white'}}>{bets?.length}</Text>
           </View>
         </View>
         <SelectList 
@@ -59,7 +59,7 @@ export default function BetList() {
           dropdownStyles={styles.dropdownFilter}
           onSelect={() => onPressOrder()}
           search={false}
-          defaultOption={{key:'0-9', value:'mayor apuesta'}}
+          defaultOption={{key:'0-9', value:'Mayor Apuesta'}}
         />
         <View style={styles.icon}>
           <Text onPress={(e) => handleOnPress(e)} style={{marginRight: 5}}>
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
   },
   num: {
     marginLeft: 5,
-    backgroundColor: '#FFF',
+    backgroundColor: '#D20A46',
     height: 30,
     width: 30,
     borderRadius: 10,

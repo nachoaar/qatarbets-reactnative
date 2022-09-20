@@ -29,7 +29,7 @@ export default function MatchList(props) {
         <View style={styles.betNum}>
           <Text>Total de partidos:</Text>
           <View style={styles.num}>
-            <Text>{props.matchs?.length}</Text>
+            <Text style={{color:'white'}}>{props.matchs?.length}</Text>
           </View>
         </View>
         <SelectList 
@@ -44,7 +44,7 @@ export default function MatchList(props) {
           defaultOption={{key:'All Matches', value:'All Matches'}}
         />
       </View>
-      <FlatList 
+      <FlatList
         data={props.matchs}
         numColumns={2}
         keyExtractor={(match) => match.id}
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
   },
   num: {
     marginLeft: 5,
-    backgroundColor: '#FFF',
+    backgroundColor: '#D20A46',
     height: 30,
     width: 30,
     borderRadius: 10,

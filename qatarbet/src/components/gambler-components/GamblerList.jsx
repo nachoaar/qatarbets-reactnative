@@ -3,6 +3,7 @@ import React from 'react'
 import GamblerCard from './GamblerCard';
 import { cacheDashGambler } from '../../redux/actions/gambler/gamblerActions';
 import { useDispatch } from 'react-redux';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 export default function GamblerList(props) {
 
@@ -18,14 +19,16 @@ export default function GamblerList(props) {
         <View style={styles.betNum}>
           <Text>Total de usuarios:</Text>
           <View style={styles.num}>
-            <Text>{props.gamblers?.length}</Text>
+            <Text style={{color: 'white'}}>{props.gamblers?.length}</Text>
           </View>
         </View>
         <View>
           <Pressable
+            style={{flexDirection: 'row', alignItems: 'center'}}
             onPress={() => onPressSubmiteCache()}
           >
-            <Text>All</Text>
+            <Text style={{marginRight: 10}}>All</Text>
+            <Icon name='filter-outline' size={15}/>
           </Pressable>
         </View>
       </View>
@@ -68,7 +71,7 @@ const styles = StyleSheet.create({
   },
   num: {
     marginLeft: 5,
-    backgroundColor: '#FFF',
+    backgroundColor: '#D20A46',
     height: 30,
     width: 30,
     borderRadius: 10,

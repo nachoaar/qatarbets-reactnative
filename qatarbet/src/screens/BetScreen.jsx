@@ -22,5 +22,6 @@ const styles = StyleSheet.create({
     height: "100%",
     paddingHorizontal: 10,
     backgroundColor: '#F8F8FA',
+    paddingBottom: 80
   }
 })

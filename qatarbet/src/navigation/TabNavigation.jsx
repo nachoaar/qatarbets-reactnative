@@ -1,27 +1,33 @@
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
+
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import Icon from "react-native-vector-icons/FontAwesome5";
+// import Icon from "react-native-vector-icons/FontAwesome5";
+import Icon from 'react-native-vector-icons/Ionicons';
+
 
 import GamblerScreen from '../screens/GamblerScreen'
 import BetScreen from '../screens/BetScreen'
 import MatchScreen from '../screens/MatchScreen'
 
 import LandingPage from '../screens/LandingPage';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from '../screens/LoginScreen';
+import { StyleSheet } from 'react-native';
+import CustomTabBarButton from '../components/CustomTabBarButton';
 
 
 const Tab = createBottomTabNavigator()
-const Stack = createNativeStackNavigator()
+
 const TabNavigation = () => {
 
   return ( 
-    <NavigationContainer independent={true}>
+    <NavigationContainer style={{backgroundColor: '#F8F8FA'}}>
       <Tab.Navigator
-        screenOptions={{
-          headerShown: false
-        }}
+        screenOptions={({route}) => ({
+          headerShown: false,
+          tabBarShowLabel: false,
+          tabBarStyle: styles.tabBarStyle,
+        })}
       >
         <Tab.Screen
           name='Landing'
@@ -44,10 +50,8 @@ const TabNavigation = () => {
         <Tab.Screen
           name='Match'
           component= { MatchScreen }
-          options={{
-            tabBarIcon: ({color, size}) => (
-              <Icon  name="futbol" color={color} size={size} />
-            )
+          options={{           
+            tabBarButton: props => <CustomTabBarButton {...props} />,
           }}
         />
 
@@ -55,9 +59,7 @@ const TabNavigation = () => {
           name='Gambler'
           component= { GamblerScreen }
           options={{
-            tabBarIcon: ({color, size}) => (
-              <Icon  name="user" color={color} size={size} />
-            )
+            tabBarButton: props => <CustomTabBarButton {...props} />,
           }}
         />
 
@@ -65,9 +67,7 @@ const TabNavigation = () => {
           name='Bet'
           component= { BetScreen }
           options={{
-            tabBarIcon: ({color, size}) => (
-              <Icon name="dollar-sign" color={color} size={size} />
-            )
+            tabBarButton: props => <CustomTabBarButton {...props} />,
           }}
         />
 
@@ -77,3 +77,19 @@ const TabNavigation = () => {
 }
 
 export default TabNavigation
+
+const styles = StyleSheet.create({
+  tabBarStyle: {
+    position: 'absolute',
+    backgroundColor: 'transparent',
+    borderTopWidth: 0,
+    bottom: 15,
+    right: 10,
+    left: 10,
+    height: 60,
+    borderRadius: 25,
+    overflow: 'hidden',
+    elevation: 2,
+    shadowColor: 'gray'
+  }
+})  
