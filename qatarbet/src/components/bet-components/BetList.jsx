@@ -1,8 +1,8 @@
-import { View, Text, FlatList, StyleSheet, TouchableHighlight } from 'react-native'
+import { View, Text, FlatList, StyleSheet, Pressable, TouchableHighlight } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import BetCard from './BetCard';
 import Icon from "react-native-vector-icons/FontAwesome5";
-import { getBets } from '../../redux/actions/bet/betActions';
+import { getBets, orderBets } from '../../redux/actions/bet/betActions';
 import { useDispatch, useSelector } from 'react-redux';
 import { Graph } from '../../screens/graph/Graph';
 
@@ -17,9 +17,6 @@ export default function BetList() {
       dispatch(getBets());
     }
   },[]);
-
-  console.log(bets.length);
-
 
   const [viewChart, setViewChart] = useState(false);
 
@@ -41,6 +38,15 @@ export default function BetList() {
   // }
 
 
+    const onPressAsc = () => {
+      dispatch(orderBets("9-0"))
+    }
+
+    const onPressDes = () => {
+      dispatch(orderBets("0-9"))
+    }
+
+
   return (
     <>
       <View style={styles.container}>
@@ -49,6 +55,15 @@ export default function BetList() {
           <View style={styles.num}>
             <Text>{bets?.length}</Text>
           </View>
+        </View>
+        <View>
+          <Text>Ordenar:</Text>
+          <Pressable onPress={onPressAsc}>
+            <Text>Asc</Text>
+          </Pressable>
+          <Pressable onPress={onPressDes}>
+            <Text>Des</Text>
+          </Pressable>
         </View>
         <View style={styles.icon}>
           <Text onPress={(e) => handleOnPress(e)} style={{marginRight: 5}}>
@@ -71,7 +86,7 @@ export default function BetList() {
           keyExtractor={(bet) => bet.id}
           showsVerticalScrollIndicator={false}
           renderItem={({item}) => (
-            <BetCard 
+            <BetCard
               bets={item}
             />
           )}
