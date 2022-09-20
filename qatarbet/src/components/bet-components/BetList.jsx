@@ -1,6 +1,7 @@
-import { View, Text, FlatList, StyleSheet, Pressable, TouchableHighlight } from 'react-native'
+import { View, Text, FlatList, StyleSheet, Pressable } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import BetCard from './BetCard';
+import SelectList from 'react-native-dropdown-select-list';
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { getBets, orderBets } from '../../redux/actions/bet/betActions';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,6 +20,12 @@ export default function BetList() {
   },[]);
 
   const [viewChart, setViewChart] = useState(false);
+  const [selected, setSelected] = useState('');
+
+  const data = [
+    {key:'0-9', value:'Mayor apuesta'},
+    {key:'9-0', value:'Menor apuesta'},
+  ]
 
   const handleOnPress = (e) => {
     e.preventDefault();
@@ -29,22 +36,9 @@ export default function BetList() {
     }
   }
 
-  // const betCards = ({item}) => {
-  //   return (
-  //     <BetCard
-  //       bets={item}
-  //     />
-  //   )
-  // }
-
-
-    const onPressAsc = () => {
-      dispatch(orderBets("9-0"))
-    }
-
-    const onPressDes = () => {
-      dispatch(orderBets("0-9"))
-    }
+  const onPressOrder = () => {
+    dispatch(orderBets(selected))
+  }
 
 
   return (
@@ -56,15 +50,17 @@ export default function BetList() {
             <Text>{bets?.length}</Text>
           </View>
         </View>
-        <View>
-          <Text>Ordenar:</Text>
-          <Pressable onPress={onPressAsc}>
-            <Text>Asc</Text>
-          </Pressable>
-          <Pressable onPress={onPressDes}>
-            <Text>Des</Text>
-          </Pressable>
-        </View>
+        <SelectList 
+          data={data}
+          setSelected={setSelected}
+          placeholder='Ordenar'
+          boxStyles={styles.filter}
+          inputStyles={styles.filterText}
+          dropdownStyles={styles.dropdownFilter}
+          onSelect={() => onPressOrder()}
+          search={false}
+          defaultOption={{key:'0-9', value:'mayor apuesta'}}
+        />
         <View style={styles.icon}>
           <Text onPress={(e) => handleOnPress(e)} style={{marginRight: 5}}>
             {viewChart === true ? (
@@ -102,7 +98,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 5,
-    marginVertical: 20,
+    marginVertical: 25,
     position: 'relative',
     elevation: 3,
     zIndex: 1
@@ -129,5 +125,18 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  filter: {
+    width: 150,
+    height: 40,
+    borderWidth: 0,
+    position: 'relative',    
+  },
+  filterText: {
+    fontSize: 12
+  },
+  dropdownFilter: {
+    position: 'absolute',
+    backgroundColor: 'white'
   }
 })
