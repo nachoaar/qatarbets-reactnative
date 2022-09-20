@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 
 import { View, StyleSheet } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
+import Header from "../components/Header";
 import MatchList from "../components/match-components/MatchList";
 import { getMatches} from "../redux/actions/match/matchAction"
 
@@ -32,6 +33,7 @@ export default function MatchScreen() {
 
   return (
     <View style={styles.container}>
+      <Header />
       <MatchList 
         matchs={filtered}
       />

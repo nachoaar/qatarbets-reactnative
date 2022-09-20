@@ -1,14 +1,15 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { Text, View, FlatList, Image, StyleSheet, Alert, Pressable } from "react-native";
+import { View, StyleSheet, Alert } from "react-native";
 
 import { getGamblers, cacheDashGambler } from '../redux/actions/gambler/gamblerActions'
-import { getBets } from "../redux/actions/bet/betActions";
+
 import GamblerList from "../components/gambler-components/GamblerList";
-// import { Graph } from './graph/Graph'
+
 
 import Searchbar from "../components/Searchbar";
+import Header from "../components/Header";
 
 
 export default function UserScreen () {
@@ -47,6 +48,7 @@ export default function UserScreen () {
 
   return (
     <View style={styles.container}>
+      <Header />
       <Searchbar />
       <GamblerList
         gamblers={gamblerName?.name? [gamblerName] : gamblers}

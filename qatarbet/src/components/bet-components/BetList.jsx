@@ -85,8 +85,12 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent:'space-between',
-    paddingHorizontal: 5
+    justifyContent: 'space-between',
+    paddingHorizontal: 5,
+    marginVertical: 20,
+    position: 'relative',
+    elevation: 3,
+    zIndex: 1
   },
   betNum: {
     flexDirection: 'row',
@@ -94,7 +98,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   num: {
-    marginLeft: 10,
+    marginLeft: 5,
     backgroundColor: '#FFF',
     height: 30,
     width: 30,

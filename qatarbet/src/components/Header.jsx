@@ -12,7 +12,6 @@ export default function Header () {
     <>
       <View style={styles.container}>
         <Text>{`Bienvenido, ${user.name}`}</Text>
-        
         <Logout />
       </View>
     </>
