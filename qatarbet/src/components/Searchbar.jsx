@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux"
 import { StyleSheet, View, TextInput, Pressable, Text } from "react-native";
 import { getGamblerName } from "../redux/actions/gambler/gamblerActions"
+import Icon from 'react-native-vector-icons/Ionicons';
 
 export default function Searchbar () {
 
@@ -32,7 +33,7 @@ export default function Searchbar () {
           style={{top: 4}}
           onPress={() => onPressSubmite(name)}
         >
-          <Text>Search</Text>
+          <Icon name='search-outline' size={25}/>
         </Pressable>
       </View>
       {/* <Button
