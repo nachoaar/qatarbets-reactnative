@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { Text, View, FlatList, Image, StyleSheet, Pressable } from "react-native";
+import { Text, View, FlatList, Image, StyleSheet, Alert, Pressable } from "react-native";
 import { getGamblers, cacheDashGambler } from '../redux/actions/gambler/gamblerActions'
 import { ModalVisible } from './modal'
 import { getBets } from "../redux/actions/bet/betActions";
@@ -15,8 +15,21 @@ export default function UserScreen () {
 
   const dispatch = useDispatch();
   const gamblers = useSelector((store) => store.gambler?.gamblers)
-  const { gamblerName } = useSelector((store) => store.gambler)
+  const gamblerName = useSelector((store) => store.gambler?.gamblerName)
   const bets = useSelector((store) => store.bet?.bets)
+
+
+  if(gamblerName){
+    if(gamblerName.error){
+      Alert.alert(
+        'ERROR',
+        gamblerName.error,
+        [
+          { text: "OK", onPress: () => console.log("OK Pressed") }
+        ]
+      )
+    }
+  }
 
   useEffect(() => {
     if(bets.length === 0){
@@ -32,8 +45,8 @@ export default function UserScreen () {
 
   return (
     <View style={styles.container}>
-      <GamblerList 
-        gamblers={gamblers}
+      <GamblerList
+        gamblers={gamblerName?.name? [gamblerName] : gamblers}
         bets={bets}
       />
       {/* <View>

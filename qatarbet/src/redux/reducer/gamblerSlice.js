@@ -4,8 +4,8 @@ export const gamblerSlice = createSlice({
   name: "gambler",
   initialState: {
     gamblers: [],
-    gamblerId: {},
-    gamblerName: {}
+    gamblerId: [],
+    gamblerName: []
   },
   reducers: {
     Gambler: (state, action) => {
@@ -16,10 +16,10 @@ export const gamblerSlice = createSlice({
     },
     GamblerName: (state, action) => {
       let gamblerByName = state.gamblers.find((g) => g.name === action.payload)
-      state.gamblerName = gamblerByName === undefined ? {} : gamblerByName
+      state.gamblerName = gamblerByName === undefined ? {error: "El usuario no Existe"} : gamblerByName
     },
     CacheGambler: (state) => {
-      state.gamblerName = {}
+      state.gamblerName = []
     }
   }
 })
