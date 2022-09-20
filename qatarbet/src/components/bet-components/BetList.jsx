@@ -1,9 +1,25 @@
 import { View, Text, FlatList, StyleSheet, TouchableHighlight } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import BetCard from './BetCard';
 import Icon from "react-native-vector-icons/FontAwesome5";
+import { getBets } from '../../redux/actions/bet/betActions';
+import { useDispatch, useSelector } from 'react-redux';
+import { Graph } from '../../screens/graph/Graph';
 
-export default function BetList({bets}) {
+export default function BetList() {
+
+  const dispatch = useDispatch();
+
+  const bets = useSelector((store) => store.bets?.bets);
+
+  useEffect(() => {
+    if(bets.length === 0) {
+      dispatch(getBets());
+    }
+  },[]);
+
+  console.log(bets.length);
+
 
   const [viewChart, setViewChart] = useState(false);
 
@@ -15,6 +31,15 @@ export default function BetList({bets}) {
       setViewChart(false);
     }
   }
+
+  // const betCards = ({item}) => {
+  //   return (
+  //     <BetCard
+  //       bets={item}
+  //     />
+  //   )
+  // }
+
 
   return (
     <>
@@ -37,26 +62,19 @@ export default function BetList({bets}) {
       </View>
       {viewChart === true ? (
         <View>
-          <Text>hola soy las charts</Text>
+          <Graph />
         </View>
       ) : (
         <FlatList
           data={bets}
-          numColumns={2}
+          numColumns={1}
           keyExtractor={(bet) => bet.id}
           showsVerticalScrollIndicator={false}
-          renderItem={({ item : bets}) => (
-            <BetCard
-              id={bets.id}
-              result={bets.result}
-              money_bet={bets.money_bet}
-              userId={bets.userId}
-              matchId={bets.matchId}
-              final_profit={bets.final_profit}
-              fecha_hora={bets.fecha_hora}
+          renderItem={({item}) => (
+            <BetCard 
+              bets={item}
             />
           )}
-          contentContainerStyle={styles.flatListContentContainer}
         />
       )}
     </>

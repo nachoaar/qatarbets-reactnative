@@ -5,25 +5,38 @@ import { useEffect } from "react";
 import { getGamblerId } from "../../redux/actions/gambler/gamblerActions";
 import BetModal from './BetModal';
 import { useState } from 'react';
+import { matchId } from '../../redux/actions/match/matchAction';
 
 
-export default function BetCard(props) {
+export default function BetCard({bets}) {
 
-  // console.log('id usuarios >>>>', props.userId);
+  // console.log(bets);
 
-  const [modalOpen, setModalOpen] = useState(false);
+  // let user = bets.map((e) => {
+  //   e.userId
+  // })
+  // console.log('user:', user);
+
+
+  // console.log('userId: ', user.length);
+
+  // console.log('id usuarios >>>>', bets.userId);
 
   // const dispatch = useDispatch();
 
-  // const {gamblerId} = useSelector((store) => store.gambler)
+  // const gambler = useSelector((store) => store.gambler?.gamblerId)
+  // // const matchById = useSelector((store) => store.matches?.matchId)
 
   // useEffect(() => {
-  //   if(props.userId === null) {
-  //     dispatch(getGamblerId('406a59ce-bc66-4a32-a52f-e8517f73342c'));
-  //   } else {
-  //     dispatch(getGamblerId(props.userId));
-  //   }
-  // },[dispatch, props.userId])
+  //   let apuestas = bets.userId
+  //   apuestas = apuestas ? bets.userId : apuestas
+  //   dispatch(getGamblerId(apuestas))
+  //   // dispatch(matchId(props.matchId))
+  // },[dispatch, bets])
+
+  // console.log('gambler >>>>>', gambler);
+
+  const [modalOpen, setModalOpen] = useState(false);
 
   const handleOnPress = (e) => {
     e.preventDefault();
@@ -42,8 +55,8 @@ export default function BetCard(props) {
             <View style={styles.bgStyle}>
             {/* <Text style={styles.condition}>{!user ? 'Usuario' : user[0]?.name}</Text> */}
               <Text style={styles.condition}>a</Text>
-              <Text>Home vs Away</Text>
-              <Text style={{color: props.final_profit > 0 ? 'green' : 'red'}}>{props.final_profit > 0 ? 'Win' : 'Lose'}</Text>
+              <Text>a</Text>
+              <Text>a</Text>
             </View>
           </View>
         </View>

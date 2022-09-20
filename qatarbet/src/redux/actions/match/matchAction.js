@@ -1,5 +1,6 @@
 import axios from "axios";
-import { matches, matchesFinished, matchesNotStarted, allMatches } from "../../reducer/matchSlice";
+
+import { getMatch, matchesFinished, matchesNotStarted, allMatches } from "../../reducer/matchSlice";
 
 
 export const getMatches = () => {
@@ -7,7 +8,7 @@ export const getMatches = () => {
     try {
         const apiMostBet = await axios.get('https://qatarbets-backend-production-ab54.up.railway.app/fixture/get');
         const apiMostBetMatches = apiMostBet.data
-        dispatch(matches(apiMostBetMatches))
+        dispatch(getMatch(apiMostBetMatches))
         // console.log(apiMostBetMatches);
     } catch (error) {
         console.error(error);
@@ -28,3 +29,4 @@ export const filterMatchesStatus = (payload) => {
     }
   }
 }
+

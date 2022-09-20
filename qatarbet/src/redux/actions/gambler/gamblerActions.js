@@ -17,9 +17,9 @@ export const getGamblerId = (payload) => {
   return async function (dispatch) {
     try {
       const gamblerId = await axios.get(`https://qatarbets-backend-production-ab54.up.railway.app/user/userId/${payload}`);
-      dispatch(GamblerId(gamblerId.data))
+      await dispatch(GamblerId(gamblerId.data));
     } catch (error) {
-      console.log(error);
+      console.log('error linea 22', error);
     }
   }
 }

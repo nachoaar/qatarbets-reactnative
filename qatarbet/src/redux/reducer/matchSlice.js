@@ -1,15 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { matches: [] }
-
 export const matchSlice = createSlice({
     name: 'match',
     initialState: {
+        matches: [],
+        matchId: {}
       matches: [],
       allMatches: []
     },
     reducers: {
-        matches(state, action) {
+        getMatch: (state, action) => {
             state.matches = action.payload
             state.allMatches = action.payload
         },
@@ -31,5 +31,6 @@ export const matchSlice = createSlice({
       }
 })
 
-export const { matches, matchesFinished, matchesNotStarted, allMatches } = matchSlice.actions;
+export const { getMatch, matchesFinished, matchesNotStarted, allMatches } = matchSlice.actions;
 export default matchSlice.reducer;
+

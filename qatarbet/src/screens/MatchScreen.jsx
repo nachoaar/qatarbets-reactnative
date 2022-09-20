@@ -1,8 +1,10 @@
-import axios from "axios";
 import React, { useEffect } from "react";
-import { Text, View, Pressable } from "react-native";
+
+import { Text, View, StyleSheet, Pressable } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
+import MatchList from "../components/match-components/MatchList";
 import { getMatches, filterMatchesStatus } from "../redux/actions/match/matchAction"
+
 
 
 export default function MatchScreen() {
@@ -23,11 +25,18 @@ export default function MatchScreen() {
   }
 
   useEffect(() => {
-    dispatch(getMatches());
-  }, [])
+    if (matchs.length === 0) {
+      dispatch(getMatches());
+    }
+  },[]);
+
+  console.log(matchs.length);
 
   return (
-    <View>
+    <View style={styles.container}>
+      <MatchList 
+        matchs={matchs}
+      />
       <Pressable  onPress={onPressFinished}>
         <Text>Finished</Text>
       </Pressable>
@@ -42,3 +51,12 @@ export default function MatchScreen() {
   )
 
 }
+
+const styles = StyleSheet.create({
+  container: {
+    height: '100%',
+    paddingHorizontal: 10,
+    backgroundColor: '#F8F8FA'
+  }
+})
+

@@ -19,6 +19,7 @@ export const gamblerSlice = createSlice({
       state.gamblerName = gamblerByName === undefined ? {error: "El usuario no Existe"} : gamblerByName
     },
     CacheGambler: (state) => {
+      state.gamblerId = {}
       state.gamblerName = []
     }
   }
