@@ -1,5 +1,6 @@
 import { View, Text, Modal, StyleSheet } from 'react-native'
 import React from 'react'
+import { Graph } from '../../screens/graph/Graph'
 
 export default function BetModal({modalOpen, setModalOpen}) {
    
@@ -19,9 +20,8 @@ export default function BetModal({modalOpen, setModalOpen}) {
               </View>
             </View>
             <View style={styles.contain}>
-              <Text>
-                Contain
-              </Text>
+              <Text>Details</Text>
+              <Graph />
             </View>
           </View>
         </View>  

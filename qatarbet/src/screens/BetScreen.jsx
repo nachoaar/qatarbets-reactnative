@@ -9,23 +9,10 @@ import { getBets } from "../redux/actions/bet/betActions";
 
 export default function BetScreen () {
 
-  const dispatch = useDispatch();
-
-  const bets = useSelector((store) => store.bets?.bets);
-
-  useEffect(() => {
-    if(bets.length === 0) {
-      dispatch(getBets());
-    }
-  },[]);
-
-  console.log(bets.length);
 
   return (
     <View style={styles.container}>
-      <BetList
-        bets={bets}
-      />   
+      <BetList />   
     </View>
   )
 

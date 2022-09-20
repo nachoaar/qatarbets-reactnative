@@ -12,9 +12,6 @@ export const gamblerSlice = createSlice({
       state.gamblers = action.payload
     },
     GamblerId: (state, action) => {
-      if(Object.keys(state.gamblerId).length > 0) {
-        state.gamblerId = {}
-      }
       state.gamblerId = action.payload
     },
     GamblerName: (state, action) => {

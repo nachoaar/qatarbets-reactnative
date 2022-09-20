@@ -2,32 +2,39 @@ import React from 'react'
 import { Text, View, StyleSheet, TouchableWithoutFeedback } from 'react-native'
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { cacheDashGambler, getGamblerId } from "../../redux/actions/gambler/gamblerActions";
+import { getGamblerId } from "../../redux/actions/gambler/gamblerActions";
 import BetModal from './BetModal';
 import { useState } from 'react';
 import { matchId } from '../../redux/actions/match/matchAction';
 
 
-export default function BetCard(props) {
+export default function BetCard({bets}) {
 
-  console.log('id usuarios >>>>', props.userId);
+  // console.log(bets);
+
+  // let user = bets.map((e) => {
+  //   e.userId
+  // })
+  // console.log('user:', user);
 
 
-  const dispatch = useDispatch();
+  // console.log('userId: ', user.length);
 
-  const gambler = useSelector((store) => store.gambler?.gamblerId)
-  const matchById = useSelector((store) => store.matches?.matchId)
+  // console.log('id usuarios >>>>', bets.userId);
 
-  useEffect(() => {
-    dispatch(getGamblerId(props.userId))
-    dispatch(matchId(props.matchId))
-  },[])
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    return () => {
-      dispatch(cacheDashGambler());
-    }
-  },[dispatch])
+  // const gambler = useSelector((store) => store.gambler?.gamblerId)
+  // // const matchById = useSelector((store) => store.matches?.matchId)
+
+  // useEffect(() => {
+  //   let apuestas = bets.userId
+  //   apuestas = apuestas ? bets.userId : apuestas
+  //   dispatch(getGamblerId(apuestas))
+  //   // dispatch(matchId(props.matchId))
+  // },[dispatch, bets])
+
+  // console.log('gambler >>>>>', gambler);
 
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -47,9 +54,9 @@ export default function BetCard(props) {
           <View style={styles.spacing}>
             <View style={styles.bgStyle}>
             {/* <Text style={styles.condition}>{!user ? 'Usuario' : user[0]?.name}</Text> */}
-              <Text style={styles.condition}>{gambler[0]?.name}</Text>
-              <Text>{`${matchById[0]?.home_team?.name} vs ${matchById[0]?.away_team?.name}`}</Text>
-              <Text style={{color: props.final_profit > 0 ? 'green' : 'red'}}>{props.final_profit > 0 ? 'Win' : 'Lose'}</Text>
+              <Text style={styles.condition}>a</Text>
+              <Text>a</Text>
+              <Text>a</Text>
             </View>
           </View>
         </View>
