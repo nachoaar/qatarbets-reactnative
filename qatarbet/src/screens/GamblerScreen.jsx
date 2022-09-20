@@ -1,7 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { View, StyleSheet } from "react-native";
+import { Text, View, FlatList, Image, StyleSheet, Alert, Pressable } from "react-native";
+
 import { getGamblers, cacheDashGambler } from '../redux/actions/gambler/gamblerActions'
 import { getBets } from "../redux/actions/bet/betActions";
 import GamblerList from "../components/gambler-components/GamblerList";
@@ -11,7 +12,24 @@ export default function UserScreen () {
 
   const dispatch = useDispatch();
   const gamblers = useSelector((store) => store.gambler?.gamblers)
+
   const bets = useSelector((store) => store.bets?.bets)
+
+  const gamblerName = useSelector((store) => store.gambler?.gamblerName)
+
+
+
+  if(gamblerName){
+    if(gamblerName.error){
+      Alert.alert(
+        'ERROR',
+        gamblerName.error,
+        [
+          { text: "OK", onPress: () => console.log("OK Pressed") }
+        ]
+      )
+    }
+  }
 
   useEffect(() => {
     if(gamblers.length === 0){
@@ -26,8 +44,8 @@ export default function UserScreen () {
 
   return (
     <View style={styles.container}>
-      <GamblerList 
-        gamblers={gamblers}
+      <GamblerList
+        gamblers={gamblerName?.name? [gamblerName] : gamblers}
         bets={bets}
       />
     </View>

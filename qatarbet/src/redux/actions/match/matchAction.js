@@ -1,25 +1,32 @@
 import axios from "axios";
-import { getMatch, getMatchId } from "../../reducer/matchSlice";
+
+import { getMatch, matchesFinished, matchesNotStarted, allMatches } from "../../reducer/matchSlice";
 
 
 export const getMatches = () => {
-    return async function (dispatch) {
-        try {
-            const match = await axios.get('https://qatarbets-backend-production-ab54.up.railway.app/fixture/get');
-            dispatch(getMatch(match.data));
-        } catch (error) {
-            console.error(error);
-        }
+  return async function (dispatch) {
+    try {
+        const apiMostBet = await axios.get('https://qatarbets-backend-production-ab54.up.railway.app/fixture/get');
+        const apiMostBetMatches = apiMostBet.data
+        dispatch(getMatch(apiMostBetMatches))
+        // console.log(apiMostBetMatches);
+    } catch (error) {
+        console.error(error);
     }
+  }
 }
 
-export function matchId(payload) {
-    return async function (dispatch) {
-        try {
-            const match = await axios.get(`https://qatarbets-backend-production-ab54.up.railway.app/fixture/${payload}`);
-            dispatch(getMatchId(match.data))       
-        } catch (error) {
-            console.error(error);
-        }
-    };
+export const filterMatchesStatus = (payload) => {
+  return async function (dispatch) {
+    if(payload === "Finished"){
+      dispatch(matchesFinished(payload))
+    }
+    if(payload === "Not Started"){
+      dispatch(matchesNotStarted(payload))
+    }
+    if(payload === "All Matches"){
+      dispatch(allMatches(payload))
+    }
   }
+}
+

@@ -26,7 +26,9 @@ export const getGamblerId = (payload) => {
 
 export const getGamblerName = (payload) => {
   return async function (dispatch) {
-    dispatch(GamblerName(payload));
+    const value = payload.toLowerCase()
+    const resMsg = await dispatch(GamblerName(value));
+    return resMsg
   }
 }
 

@@ -1,24 +1,50 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux"
+import { StyleSheet, Button, View, TextInput } from "react-native";
+import { getGamblerName, cacheDashGambler } from "../redux/actions/gambler/gamblerActions"
 import { SearchBar } from "react-native-screens";
 
 export default function Searchbar () {
 
+  const [name, setName] = useState();
+  const dispatch = useDispatch();
+
+  const onPressSubmite = async (input) => {
+    if(input  !== undefined){
+      dispatch(getGamblerName(input))
+    }
+  }
+
+  const onPressSubmiteCahe = async () => {
+    dispatch(cacheDashGambler())
+  }
+
+  cacheDashGambler
   return (
-    <View style={styles.container}>
-      <Text>Searchbar</Text>
+    <View>
+      <TextInput
+        style={styles.input}
+        onChangeText={setName}
+        value={name}
+        placeholder="Buscar Gambler"
+      />
+      <Button
+        title="buscar"
+        onPress={() => onPressSubmite(name)}
+      />
+      <Button
+        title="Todos"
+        onPress={() => onPressSubmiteCahe()}
+      />
     </View>
   )
-
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'white',
-    paddingVertical: 20,
-    alignItems:'center',
-  },
-  text: {
-    
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
   }
 })
