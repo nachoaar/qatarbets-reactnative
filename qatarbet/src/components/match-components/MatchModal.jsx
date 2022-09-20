@@ -2,7 +2,7 @@ import { View, Text, Modal, StyleSheet } from 'react-native'
 import React from 'react'
 import { Graph } from '../../screens/graph/Graph'
 
-export default function GamblerModal({modalOpen, setModalOpen}) {
+export default function MatchModal({modalOpen, setModalOpen}) {
    
   return (
     <>

@@ -1,19 +1,20 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { useSelector } from "react-redux";
 import { Logout } from "../screens/Logout";
-
-import Searchbar from "./Searchbar";
 
 
 export default function Header () {
 
+  const user = useSelector((store) => store.user?.user)
+
   return (
     <>
       <View style={styles.container}>
-        <Text style={styles.text}>Bienvenido, Ignacio</Text>
+        <Text>{`Bienvenido, ${user.name}`}</Text>
+        
         <Logout />
       </View>
-      <Searchbar />
     </>
   )
 
@@ -30,8 +31,5 @@ const styles = StyleSheet.create({
     justifyContent:'space-between',
     borderBottomWidth: 1,
     borderBottomColor: '#E4E4E4'
-  },
-  text: {
-    color:'red'
   }
 })

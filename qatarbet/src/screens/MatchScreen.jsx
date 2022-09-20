@@ -1,34 +1,41 @@
-import axios from "axios";
 import React, { useEffect } from "react";
-import { Text, View, Pressable } from "react-native";
+
+import { View, StyleSheet } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { getMatches, filterMatchesStatus } from "../redux/actions/match/matchAction"
+import MatchList from "../components/match-components/MatchList";
+import { getMatches} from "../redux/actions/match/matchAction"
+
 
 
 export default function MatchScreen() {
 
-  const {matches} = useSelector((store) => store.matches);
+  const {filtered} = useSelector((store) => store.matches);
   const dispatch = useDispatch()
 
-  const onPressFinished = () => {
-    dispatch(filterMatchesStatus("Finished"))
-  }
+  // const onPressFinished = () => {
+  //   dispatch(filterMatchesStatus("Finished"))
+  // }
 
-  const onPressNotStarted = () => {
-    dispatch(filterMatchesStatus("Not Started"))
-  }
+  // const onPressNotStarted = () => {
+  //   dispatch(filterMatchesStatus("Not Started"))
+  // }
 
-  const onPressAllMatches = () => {
-    dispatch(filterMatchesStatus("All Matches"))
-  }
+  // const onPressAllMatches = () => {
+  //   dispatch(filterMatchesStatus("All Matches"))
+  // }
 
   useEffect(() => {
-    dispatch(getMatches());
-  }, [])
+      dispatch(getMatches());
+  },[]);
+
+  console.log(filtered.length);
 
   return (
-    <View>
-      <Pressable  onPress={onPressFinished}>
+    <View style={styles.container}>
+      <MatchList 
+        matchs={filtered}
+      />
+      {/* <Pressable  onPress={onPressFinished}>
         <Text>Finished</Text>
       </Pressable>
       <Pressable onPress={onPressNotStarted}>
@@ -37,8 +44,17 @@ export default function MatchScreen() {
       <Pressable onPress={onPressAllMatches}>
         <Text>All Matches</Text>
       </Pressable>
-      <Text>Hola soy Match</Text>
+      <Text>Hola soy Match</Text> */}
     </View>
   )
 
 }
+
+const styles = StyleSheet.create({
+  container: {
+    height: '100%',
+    paddingHorizontal: 10,
+    backgroundColor: '#F8F8FA'
+  }
+})
+

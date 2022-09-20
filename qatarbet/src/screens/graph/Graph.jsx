@@ -26,7 +26,7 @@ export const Graph = (bets, id) => {
           }
           ]
         }}
-        width={Dimensions.get("window").width - 15} // from react-native
+        width={Dimensions.get("window").width - 80} // from react-native
         height={220}
         yAxisLabel="$"
         yAxisSuffix="k"

@@ -1,35 +1,36 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { matches: [] }
-
 export const matchSlice = createSlice({
     name: 'match',
     initialState: {
-      matches: [],
-      allMatches: []
+        matches: [],
+        filtered: [],
+        backup: [],
+        matchId: {},
+        allMatches: [],
     },
     reducers: {
-        matches(state, action) {
+        getMatch: (state, action) => {
             state.matches = action.payload
-            state.allMatches = action.payload
+            state.filtered = action.payload
+            state.backup = action.payload
         },
         matchesFinished(state, action) {
-          const allMatches = state.allMatches;
-          const finishedMatches = action.payload = "Finished" ? allMatches.filter(match => match.status = "Finished") : allMatches;
-          state.matches = finishedMatches
+          const finishedMatches = action.payload = "Finished" ? state.backup.filter((match) => match.status === action.payload) : state.backup;
+          state.filtered = finishedMatches
         },
         matchesNotStarted(state, action) {
-          const allMatches = state.allMatches;
-          const NotStartedMatches = action.payload = "Not Started" ? allMatches.filter(match => match.status = "Not Started") : allMatches;
-          state.matches = NotStartedMatches
+          const NotStartedMatches = action.payload = "Not Started" ? state.backup.filter((match) => match.status === action.payload) : state.backup;
+          state.filtered = NotStartedMatches
         },
         allMatches(state, action){
           if(action.payload === "All Matches"){
-            state.matches = state.allMatches
+            state.filtered = state.backup
           }
         }
       }
 })
 
-export const { matches, matchesFinished, matchesNotStarted, allMatches } = matchSlice.actions;
+export const { getMatch, matchesFinished, matchesNotStarted, allMatches } = matchSlice.actions;
 export default matchSlice.reducer;
+

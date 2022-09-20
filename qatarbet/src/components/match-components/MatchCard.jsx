@@ -1,10 +1,19 @@
 import { View, Text, TouchableWithoutFeedback, StyleSheet } from 'react-native'
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import GamblerModal from './GamblerModal';
+import React, { useState } from 'react'
+import MatchModal from './MatchModal';
 
-export default function GamblerCard(props) {
+export default function MatchCard(props) {
 
+  let date = new Date(props.date);
+
+  date = date.toLocaleDateString("es-AR", {
+    weekday: "long",
+    day: "numeric",
+    month: "numeric",
+    year: "numeric",
+  });
+
+  let hora = new Date(props.date)
 
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -15,23 +24,23 @@ export default function GamblerCard(props) {
 
   return (
     <>
-      <TouchableWithoutFeedback 
+      <TouchableWithoutFeedback
         onPress={(e) => handleOnPress(e)}
       >
         <View style={styles.card}>
           <View style={styles.spacing}>
             <View style={styles.bgStyle}>
-              <Text style={styles.condition}>{props.name}</Text>
-              <Text>{props.rol}</Text>
-              <Text>{props.userbanned === false ? 'active' : 'banned'}</Text>
+              <Text style={styles.condition}>{date}</Text>
+              <Text>{`${props.home_team} vs ${props.away_team}`}</Text>
+              <Text>{props.status}</Text>
             </View>
           </View>
         </View>
       </TouchableWithoutFeedback>
-      <GamblerModal 
+      <MatchModal 
         modalOpen={modalOpen}
         setModalOpen={setModalOpen}
-      />      
+      />
     </>
   )
 }
