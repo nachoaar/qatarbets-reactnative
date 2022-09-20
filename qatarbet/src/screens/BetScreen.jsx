@@ -23,9 +23,10 @@ export default function BetScreen () {
 
   return (
     <View style={styles.container}>
+
       <BetList
         bets={bets}
-      />   
+      />
     </View>
   )
 
