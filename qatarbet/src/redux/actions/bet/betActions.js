@@ -1,5 +1,5 @@
 import axios from "axios"
-import { Bet } from "../../reducer/betSlice"
+import { Bet, OrderBets } from "../../reducer/betSlice"
 
 export const getBets = () => {
   return async function (dispatch) {
@@ -9,5 +9,11 @@ export const getBets = () => {
     } catch (error) {
       console.log(error);
     }
+  }
+}
+
+export const orderBets = (payload) => {
+  return async function (dipatch) {
+    dipatch(OrderBets(payload))
   }
 }
