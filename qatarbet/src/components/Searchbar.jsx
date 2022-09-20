@@ -29,6 +29,7 @@ export default function Searchbar () {
           placeholder="Buscar usuario"
         />
         <Pressable
+          style={{top: 4}}
           onPress={() => onPressSubmite(name)}
         >
           <Text>Search</Text>
@@ -54,11 +55,14 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    margin: 12,
+    marginTop: 10,
+    marginBottom: 0,
+    marginHorizontal: 10,
     borderWidth: 1,
     padding: 10,
+    paddingLeft: 20,
     width: '70%',
-    borderRadius: 10,
+    borderRadius: 25,
     borderColor:'#E4E4E4'
   },
   search: {

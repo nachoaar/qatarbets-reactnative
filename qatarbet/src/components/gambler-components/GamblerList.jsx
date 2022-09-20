@@ -55,7 +55,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: 5
+    paddingHorizontal: 5,
+    marginTop: 0,
+    position: 'relative',
+    elevation: 3,
+    zIndex: 1
   },
   betNum: {
     flexDirection: 'row',
@@ -63,7 +67,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   num: {
-    marginLeft: 10,
+    marginLeft: 5,
     backgroundColor: '#FFF',
     height: 30,
     width: 30,

@@ -35,7 +35,7 @@ export default function MatchList(props) {
         <SelectList 
           data={data} 
           setSelected={setSelected}
-          placeholder='Filter'
+          placeholder='Filtrar'
           boxStyles={styles.filter}
           inputStyles={styles.filterText}
           dropdownStyles={styles.dropdownFilter}
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 5,
-    marginVertical: 20,
+    marginVertical: 25,
     position: 'relative',
     elevation: 3,
     zIndex: 1
