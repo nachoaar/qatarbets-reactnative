@@ -78,7 +78,7 @@ export default function BetList() {
       ) : (
         <FlatList
           data={bets}
-          numColumns={1}
+          numColumns={2}
           keyExtractor={(bet) => bet.id}
           showsVerticalScrollIndicator={false}
           renderItem={({item}) => (
