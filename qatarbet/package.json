@@ -28,10 +28,17 @@
     "react-native-svg": "^12.3.0",
     "react-native-vector-icons": "^9.2.0",
     "react-redux": "^8.0.2",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "expo-font": "~10.2.0",
+    "expo-splash-screen": "~0.16.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
+  },
+  "rnpm": {
+    "assets": [
+      "./assets/fonts/"
+    ]
   },
   "private": true
 }
