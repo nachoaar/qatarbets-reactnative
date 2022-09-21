@@ -21,10 +21,12 @@ export default function BetCard({bets}) {
         <View style={styles.card}>
           <View style={styles.spacing}>
             <View style={styles.bgStyle}>
-              <Text style={styles.condition}>{bets.user}</Text>
+              <Text style={styles.username}>{bets.user}</Text>
               <Text>{bets.match}</Text>
-              <Text>{bets.money_bet}</Text>
-              <Text>{bets.final_profit === null || bets.final_profit === 0 ? 'Lose' : 'Win'}</Text>
+              <View style={styles.apuesta}>
+                <Text>{bets.money_bet}</Text>
+                <Text>{bets.final_profit === null || bets.final_profit === 0 ? 'Perdido' : 'Ganado'}</Text>
+              </View>
             </View>
           </View>
         </View>
@@ -54,12 +56,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around'
   },
-  condition: {
+  username: {
     width:'100%',
     textAlign:'center',
     paddingVertical: 5,
     height: 30,
     borderBottomWidth: 1,
-    borderBottomColor: '#F8F8FA'
+    borderBottomColor: '#F8F8FA',
+    backgroundColor:'yellow'
+  },
+  apuesta: {
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-around'
   }
 })
