@@ -6,10 +6,21 @@ import TabNavigation from './src/navigation/TabNavigation';
 
 import { Provider } from 'react-redux';
 import store from './src/redux/store';
+import { useFonts } from 'expo-font';
 
 export default function App() {
 
   const RootApp = () => {
+
+    const [loaded] = useFonts({
+      'Koulen': require('./assets/fonts/Koulen-Regular.ttf'),
+      'Roboto': require('./assets/fonts/Roboto-Regular.ttf'),
+    });
+  
+    if (!loaded) {
+      return null;
+    }
+
     return (
       <View style={styles.container}>
         {/* <StackNavigation /> */}
