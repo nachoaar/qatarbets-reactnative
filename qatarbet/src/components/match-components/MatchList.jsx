@@ -21,8 +21,6 @@ export default function MatchList(props) {
       dispatch(filterMatchesStatus(selected));
   }
 
-  // console.log(selected);
-
   return (
     <>
       <View style={styles.container}>
@@ -55,10 +53,15 @@ export default function MatchList(props) {
             date={matchs.date}
             status={matchs.status}
             home_team={matchs.home_team.name}
+            home_group_points={matchs.home_team.group_points}
+            home_code={matchs.home_team.code}
             away_team={matchs.away_team.name}
+            away_group_points={matchs.away_team.group_points}
+            away_code={matchs.away_team.code}
             result_match={matchs.result_match}
             stadium_name={matchs.stadium_name}
             city={matchs.city}
+
           />
         )}
       />

@@ -5,7 +5,6 @@ import SelectList from 'react-native-dropdown-select-list';
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { getBets, orderBets } from '../../redux/actions/bet/betActions';
 import { useDispatch, useSelector } from 'react-redux';
-import { Graph } from '../../screens/graph/Graph';
 
 export default function BetList() {
 
@@ -19,7 +18,6 @@ export default function BetList() {
     }
   },[]);
 
-  const [viewChart, setViewChart] = useState(false);
   const [selected, setSelected] = useState('');
 
   const data = [
@@ -27,18 +25,11 @@ export default function BetList() {
     {key:'9-0', value:'Menor Apuesta'},
   ]
 
-  const handleOnPress = (e) => {
-    e.preventDefault();
-    if (viewChart === false) {
-      setViewChart(true);
-    } else {
-      setViewChart(false);
-    }
-  }
-
   const onPressOrder = () => {
     dispatch(orderBets(selected))
   }
+
+  // console.log("AAAAA", bets);
 
 
   return (
@@ -61,33 +52,18 @@ export default function BetList() {
           search={false}
           defaultOption={{key:'0-9', value:'Mayor Apuesta'}}
         />
-        <View style={styles.icon}>
-          <Text onPress={(e) => handleOnPress(e)} style={{marginRight: 5}}>
-            {viewChart === true ? (
-              <Icon  name="list" size={20} />
-            ): (
-              <Icon  name="chart-bar" size={20} />
-            )}
-          </Text>
-        </View>
       </View>
-      {viewChart === true ? (
-        <View>
-          <Graph />
-        </View>
-      ) : (
-        <FlatList
-          data={bets}
-          numColumns={2}
-          keyExtractor={(bet) => bet.id}
-          showsVerticalScrollIndicator={false}
-          renderItem={({item}) => (
-            <BetCard
-              bets={item}
-            />
-          )}
-        />
-      )}
+      <FlatList
+        data={bets}
+        numColumns={2}
+        keyExtractor={(bet) => bet.id}
+        showsVerticalScrollIndicator={false}
+        renderItem={({item}) => (
+          <BetCard
+            bets={item}
+          />
+        )}
+      />
     </>
   )
 }

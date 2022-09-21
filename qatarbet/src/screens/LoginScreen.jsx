@@ -41,14 +41,14 @@ export default function LoginScreen ({navigation}) {
     const message = await dispatch(loginUser({email, pass}))
     if(message.error){
       Alert.alert(
-        'ERROR',
+        '! error',
         message.error,
         [
-          { text: "OK", onPress: () => console.log("OK Pressed") }
+          { text: "Salir"}
         ]
       )
     } else {
-      const info = await authUser.getStoreData();
+      await authUser.getStoreData();
       navigation.navigate('Match');
     }
   }
