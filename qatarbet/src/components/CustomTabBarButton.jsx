@@ -22,7 +22,7 @@ const CustomTabBarButton = (props) => {
     return (
       <View style={styles.btnWrapper}>
         <Pressable onPress={onPress} style={styles.activeBtn}>
-          <Icon name={iconName} size={30} style={styles.active} />
+          <Icon name={iconName} size={35} style={styles.active} />
         </Pressable>
       </View>
     )
@@ -45,11 +45,10 @@ const styles = StyleSheet.create({
   btnWrapper: {
     flex: 1,
     alignItems: 'center',
+    justifyContent:'center',
     backgroundColor: 'white',
   }, 
   activeBtn: {
-    position: 'absolute',
-    top: -2,
     width: 50,
     height: 50,
     borderRadius: 50/2,
@@ -69,8 +68,4 @@ const styles = StyleSheet.create({
   inactive: {
     color: '#7A7A7A'
   },
-  svgGapFiller: {
-    
-
-  }
 })

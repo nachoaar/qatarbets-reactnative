@@ -29,7 +29,6 @@ export default function MatchScreen() {
       dispatch(getMatches());
   },[]);
 
-  console.log(filtered.length);
 
   return (
     <View style={styles.container}>

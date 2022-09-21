@@ -3,7 +3,6 @@ import { StyleSheet, Text, View } from "react-native";
 import { useSelector } from "react-redux";
 import { Logout } from "../screens/Logout";
 
-
 export default function Header () {
 
   const user = useSelector((store) => store.user?.user)
