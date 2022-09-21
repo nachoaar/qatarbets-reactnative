@@ -41,7 +41,7 @@ export default function LoginScreen ({navigation}) {
     const message = await dispatch(loginUser({email, pass}))
     if(message.error){
       Alert.alert(
-        '!Error',
+        '! error',
         message.error,
         [
           { text: "Salir"}

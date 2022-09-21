@@ -13,7 +13,7 @@ export const Logout = () => {
 
 const onPressFunction = async (navigation) => {
   Alert.alert(
-    '¡Adiós!',
+    '¡adiós!',
     'Vuelve pronto',
     [
       { text: "Salir" }
@@ -27,7 +27,7 @@ const onPressFunction = async (navigation) => {
   return (
     <View>
       <Pressable onPress={() => onPressFunction(navigation)}>
-        <Icon name={'exit-outline'} size={25} />
+        <Icon name={'exit-outline'} size={20} color={'#D20A46'}/>
       </Pressable>
     </View>
   )

@@ -4,7 +4,7 @@ import { View, Text, Dimensions } from "react-native";
 import { BarChart } from "react-native-chart-kit";
 
 
-export const Graph = (props) => {
+export const GraphMatch = (props) => {
 
   return (
     <View>

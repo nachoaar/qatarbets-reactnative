@@ -1,7 +1,8 @@
 import { View, Text, Modal, StyleSheet, ScrollView } from 'react-native'
 import React from 'react'
-import { Graph } from '../../screens/graph/Graph'
+
 import Icon from 'react-native-vector-icons/Ionicons';
+import { GraphMatch } from '../../screens/graph/GraphMatch';
 
 export default function MatchModal(props) {
    
@@ -55,7 +56,7 @@ export default function MatchModal(props) {
                 </View>
               </View>
               <View style={styles.graph}>
-                <Graph 
+                <GraphMatch
                   home_group_points={props.home_group_points}
                   home_code={props.home_code}
                   away_group_points={props.away_group_points}

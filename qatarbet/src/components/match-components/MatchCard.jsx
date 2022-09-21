@@ -32,10 +32,10 @@ export default function MatchCard(props) {
           <View style={styles.spacing}>
             <View style={styles.bgStyle}>
               <View style={styles.match}>
-                <Text style={{color:'white'}}>{date}</Text>
+                <Text style={{color: '#F8F8FA', fontFamily: 'Roboto',}}>{date}</Text>
               </View>
               <View style={styles.teams}>
-                <Text>{`${props.home_team} vs ${props.away_team}`}</Text>
+                <Text style={{fontFamily: 'Roboto', fontWeight: 'bold', fontSize: 14,}}>{`${props.home_team} vs ${props.away_team}`}</Text>
               </View>
               <View style={styles.status}>
                 <Text>{props.status}</Text>
@@ -77,7 +77,8 @@ const styles = StyleSheet.create({
   bgStyle: {
     backgroundColor: '#FFFFFF',
     height: '100%',
-    borderRadius: 10,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
     alignItems: 'center',
     justifyContent: 'space-between',
     overflow: 'hidden'
@@ -92,9 +93,18 @@ const styles = StyleSheet.create({
   status: {
     height: 40,
     width: '100%',
-    borderTopWidth: 1,
+    borderWidth: 1,
     borderColor: '#E4E4E4',
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  teams: {
+    width: '100%',
+    height: 39,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRightWidth: 1,
+    borderLeftWidth: 1,
+    borderColor: '#E4E4E4'
   }
 })

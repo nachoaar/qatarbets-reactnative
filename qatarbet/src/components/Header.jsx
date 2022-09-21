@@ -1,7 +1,8 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 import { useSelector } from "react-redux";
 import { Logout } from "../screens/Logout";
+import headerImg from "../../assets/header.png"
 
 export default function Header () {
 
@@ -10,8 +11,14 @@ export default function Header () {
   return (
     <>
       <View style={styles.container}>
-        <Text>{`Bienvenido, ${user.name}`}</Text>
-        <Logout />
+        <Image
+          source={headerImg}
+          style={ {height: 100, width: 170, resizeMode: 'contain' } } 
+        />
+        <View style={styles.user}>
+          <Text>{`Bienvenido, ${user.name}`}</Text>
+          <Logout />
+        </View>
       </View>
     </>
   )
@@ -21,13 +28,18 @@ export default function Header () {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#F8F8FA',
-    height: 120,
+    height: 140,
     paddingHorizontal: 25,
     paddingBottom:10,
-    flexDirection: 'row',
-    alignItems:'flex-end',
-    justifyContent:'space-between',
+    alignItems:'center',
+    justifyContent:'center',
     borderBottomWidth: 1,
     borderBottomColor: '#E4E4E4'
+  },
+  user: {
+    flexDirection: 'row',
+    width: '100%',
+    alignItems:'center',
+    justifyContent: 'space-between'
   }
 })

@@ -13,6 +13,7 @@ export default function GamblerList(props) {
     dispatch(cacheDashGambler())
   }
 
+
   return (
     <>
       <View style={styles.container}>
@@ -24,28 +25,22 @@ export default function GamblerList(props) {
         </View>
         <View>
           <Pressable
-            style={{flexDirection: 'row', alignItems: 'center'}}
+            style={{flexDirection: 'row', alignItems: 'center', marginRight: 15}}
             onPress={() => onPressSubmiteCache()}
           >
-            <Text style={{marginRight: 10}}>All</Text>
+            <Text style={{marginRight: 5}}>All</Text>
             <Icon name='filter-outline' size={15}/>
           </Pressable>
         </View>
       </View>
       <FlatList 
         data={props.gamblers}
-        numColumns={2}
+        numColumns={1}
         keyExtractor={(gambler) => gambler.id}
         showsVerticalScrollIndicator={false}
-        renderItem={({ item : gamblers}) => (
+        renderItem={({item}) => (
           <GamblerCard 
-            id={gamblers.id}
-            name={gamblers.name}
-            age={gamblers.age}
-            email={gamblers.email}
-            avatar={gamblers.avatar}
-            userbanned={gamblers.userbanned}
-            rol={gamblers.rol}
+            gambler={item}
           />
         )}
       />

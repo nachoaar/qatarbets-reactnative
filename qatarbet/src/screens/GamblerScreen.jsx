@@ -21,8 +21,6 @@ export default function UserScreen () {
 
   const gamblerName = useSelector((store) => store.gambler?.gamblerName)
 
-
-
   if(gamblerName){
     if(gamblerName.error){
       Alert.alert(
@@ -44,7 +42,6 @@ export default function UserScreen () {
     }
   }, [])
 
-  console.log(gamblers.length);
 
   return (
     <View style={styles.container}>
