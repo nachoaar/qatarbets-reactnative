@@ -1,8 +1,7 @@
-import { View, Text, FlatList, StyleSheet, Pressable } from 'react-native'
+import { View, Text, FlatList, StyleSheet } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import BetCard from './BetCard';
 import SelectList from 'react-native-dropdown-select-list';
-import Icon from "react-native-vector-icons/FontAwesome5";
 import { getBets, orderBets } from '../../redux/actions/bet/betActions';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -28,9 +27,6 @@ export default function BetList() {
   const onPressOrder = () => {
     dispatch(orderBets(selected))
   }
-
-  // console.log("AAAAA", bets);
-
 
   return (
     <>
@@ -74,7 +70,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 5,
-    marginVertical: 25,
+    marginVertical: 10,
     position: 'relative',
     elevation: 3,
     zIndex: 1

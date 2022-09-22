@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { Pressable, View, Text, Alert, TouchableHighlight } from "react-native"
+import { Pressable, View, Alert } from "react-native"
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useDispatch } from 'react-redux'
 import { authUser } from '../redux/actions/user/authUser'
@@ -27,7 +27,7 @@ const onPressFunction = async (navigation) => {
   return (
     <View>
       <Pressable onPress={() => onPressFunction(navigation)}>
-        <Icon name={'exit-outline'} size={20} color={'#D20A46'}/>
+        <Icon name={'exit-outline'} size={25} color={'#D20A46'}/>
       </Pressable>
     </View>
   )

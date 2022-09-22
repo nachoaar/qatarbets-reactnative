@@ -16,10 +16,6 @@ export default function Searchbar () {
     }
   }
 
-  // const onPressSubmiteCache = async () => {
-  //   dispatch(cacheDashGambler())
-  // }
-
   return (
     <View style={styles.container}>
       <View style={styles.search}>
@@ -36,16 +32,6 @@ export default function Searchbar () {
           <Icon name='search-outline' size={25}/>
         </Pressable>
       </View>
-      {/* <Button
-        title="buscar"
-        onPress={() => onPressSubmite(name)}
-        color="#f194ff"
-        style={styles.button}
-      /> */}
-      {/* <Button
-        title="Todos"
-        onPress={() => onPressSubmiteCache()}
-      /> */}
     </View>
   )
 }

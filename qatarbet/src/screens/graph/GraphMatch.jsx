@@ -1,6 +1,5 @@
 import React from "react";
 import { View, Text, Dimensions } from "react-native";
-// import { useSelector } from 'react-redux';
 import { BarChart } from "react-native-chart-kit";
 
 
@@ -22,13 +21,13 @@ export const GraphMatch = (props) => {
           }
           ]
         }}
-        width={Dimensions.get("window").width - 80} // from react-native
+        width={Dimensions.get("window").width - 80}
         height={200}
-        yAxisSuffix="P" // optional, defaults to 1
+        yAxisSuffix="P"
         chartConfig={{
           backgroundGradientFrom: "#550065",
           backgroundGradientTo: "#6D0082",
-          decimalPlaces: 0, // optional, defaults to 2dp
+          decimalPlaces: 0,
           color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
           labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
           style: {

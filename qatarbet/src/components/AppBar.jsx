@@ -1,6 +1,5 @@
 import React from "react";
-import { ViewPropTypes, StyleSheet, View, Text, Image, Button } from 'react-native';
-import Constants from 'expo-constants';
+import { StyleSheet, View, Text, Image } from 'react-native';
 import usersIcon from '../../assets/users.png'
 import betsIcon from '../../assets/bets.png'
 import matchesIcon from '../../assets/matches.png'

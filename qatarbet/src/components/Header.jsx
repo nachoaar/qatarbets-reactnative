@@ -13,7 +13,7 @@ export default function Header () {
       <View style={styles.container}>
         <Image
           source={headerImg}
-          style={ {height: 100, width: 170, resizeMode: 'contain' } } 
+          style={ {height: 100, width: 180, resizeMode: 'contain' } } 
         />
         <View style={styles.user}>
           <Text>{`Bienvenido, ${user.name}`}</Text>
@@ -28,13 +28,13 @@ export default function Header () {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#F8F8FA',
-    height: 140,
+    height: 160,
     paddingHorizontal: 25,
-    paddingBottom:10,
     alignItems:'center',
     justifyContent:'center',
     borderBottomWidth: 1,
-    borderBottomColor: '#E4E4E4'
+    borderBottomColor: '#E4E4E4',
+    marginTop: 10
   },
   user: {
     flexDirection: 'row',

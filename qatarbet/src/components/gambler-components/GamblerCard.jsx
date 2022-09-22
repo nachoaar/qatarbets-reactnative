@@ -1,6 +1,5 @@
 import { View, Text, TouchableWithoutFeedback, StyleSheet, Image } from 'react-native'
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react'
 import GamblerModal from './GamblerModal';
 
 export default function GamblerCard({gambler}) {
@@ -25,20 +24,18 @@ export default function GamblerCard({gambler}) {
                   <View style={styles.avatar}>
                     <Image
                       source={{ uri: gambler.avatar }}
-                      style={{ width: 100, height: 100, }}
+                      style={{ width: '100%', height: '100%', }}
                     />
                   </View>
                 </View>
                 <View style={styles.infoContainer}>
-                  <View style={{borderBottomWidth: 1, borderColor: '#E4E4E4', height: '50%', alignItems: 'center', justifyContent: 'center'}}>
-                    <Text style={{fontFamily: 'Roboto', fontWeight: 'bold', fontSize: 14,}}>{gambler.name}</Text>
+                  <View style={{height: '50%', alignItems: 'center', justifyContent: 'center', backgroundColor: '#D20A46'}}>
+                    <Text style={{fontFamily: 'Roboto', textTransform: 'uppercase', fontSize: 15, color:'white'}}>{gambler.name}</Text>
                   </View>
-                  <View style={{height: '50%', alignItems: 'center', justifyContent: 'center'}}>
-                    <Text>{gambler.rol}</Text>
+                  <View style={{height: '50%', alignItems: 'center', justifyContent: 'center', borderRightWidth: 1, borderColor: '#E4E4E4', flexDirection: 'row', justifyContent: 'space-around'}}>
+                    <Text style={{fontFamily:'Koulen'}}>{gambler.rol}</Text>
+                    <Text style={{color: gambler.userbanned === false ? 'green' : 'red'}}>{gambler.userbanned === false ? 'Active' : 'Banned'}</Text>
                   </View>
-                </View>
-                <View style={styles.statusContainer}>
-                  <Text style={{color: gambler.userbanned === false ? 'green' : 'red'}}>{gambler.userbanned === false ? 'Active' : 'Banned'}</Text>
                 </View>
               </View>
             </View>
@@ -74,26 +71,23 @@ const styles = StyleSheet.create({
   bgStyle: {
     backgroundColor: '#FFFFFF',
     height: '100%',
-    borderRadius: 10,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
     alignItems: 'center',
     justifyContent: 'space-around',
     overflow: 'hidden',
-    borderWidth: 1,
-    borderColor: '#E4E4E4'
   },
   container: {
     flexDirection: 'row',
     width: '100%',
     height: '100%',
-    padding: 10,
     alignItems: 'center',
     justifyContent: 'space-around',
   },
   avatar: {
     height: '100%',
-    width: 100,
+    width: '100%',
     borderTopLeftRadius: 10,
-    borderBottomLeftRadius: 10,
     borderWidth: 3,
     borderColor: '#D20A46',
     overflow: 'hidden',
@@ -101,26 +95,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   avatarContainer: {
-    width: 100,
+    width: '30%',
     height: '100%',
     justifyContent: 'center',
     alignItems: 'center',
   },
   infoContainer: {
     height: '100%',
-    width: 150,
-    borderWidth: 1,
-    borderColor: '#E4E4E4',
-    paddingHorizontal: 10,
-  },
-  statusContainer: {
-    height: '100%',
-    width: 80,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderTopRightRadius: 5,
-    borderBottomRightRadius: 5,
-    borderWidth: 1,
+    width: '70%',
+    borderTopRightRadius: 6,
+    overflow: 'hidden',
+    borderBottomWidth: 1,
     borderColor: '#E4E4E4'
   }
 })

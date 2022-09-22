@@ -1,7 +1,6 @@
 import { View, Text, TouchableWithoutFeedback, StyleSheet } from 'react-native'
 import React, { useState } from 'react'
 import MatchModal from './MatchModal';
-import matchSlice from '../../redux/reducer/matchSlice';
 
 export default function MatchCard(props) {
 
@@ -35,7 +34,7 @@ export default function MatchCard(props) {
                 <Text style={{color: '#F8F8FA', fontFamily: 'Roboto',}}>{date}</Text>
               </View>
               <View style={styles.teams}>
-                <Text style={{fontFamily: 'Roboto', fontWeight: 'bold', fontSize: 14,}}>{`${props.home_team} vs ${props.away_team}`}</Text>
+                <Text style={{fontFamily: 'Koulen', fontSize: 14,}}>{`${props.home_team} vs ${props.away_team}`}</Text>
               </View>
               <View style={styles.status}>
                 <Text>{props.status}</Text>
