@@ -41,7 +41,7 @@ export default function MatchModal(props) {
                   </View>
                 </View>
                 <View style={styles.status}>
-                  <Text>{props.status}</Text>
+                  <Text style={{color: props.status === 'Finished' ? 'green' : '#D20A46'}}>{props.status}</Text>
                 </View>
                 <View style={styles.result}>
                   <Text style={{fontWeight: 'bold'}}>{props.result_match === null ? '-' : props.result_match}</Text>
