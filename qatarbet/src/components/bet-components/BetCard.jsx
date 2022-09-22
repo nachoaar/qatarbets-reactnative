@@ -2,6 +2,7 @@ import React from 'react'
 import { Text, View, StyleSheet, TouchableWithoutFeedback } from 'react-native'
 import BetModal from './BetModal';
 import { useState } from 'react';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 
 
@@ -41,7 +42,10 @@ export default function BetCard({ bets }) {
                 <Text style={styles.match}>{bets.match}</Text>
               </View>
               <View style={styles.bet}>
-                <Text style={bets.final_profit === null || bets.final_profit === 0 ? styles.betAmountLost : styles.betAmountWon}>${bets.money_bet}</Text>
+                <View style={styles.cash}>
+                  <Icon style={bets.final_profit === null || bets.final_profit === 0 ? styles.iconLost : styles.iconWon} size={20} name="cash-outline" />
+                  <Text style={bets.final_profit === null || bets.final_profit === 0 ? styles.betAmountLost : styles.betAmountWon}>{bets.money_bet}</Text>
+                </View>
                 <Text style={bets.final_profit === null || bets.final_profit === 0 ? styles.betResultLost : styles.betResultWon}>{bets.final_profit === null || bets.final_profit === 0 ? 'Perdido' : 'Ganado'}</Text>
               </View>
             </View>
@@ -88,6 +92,18 @@ const styles = StyleSheet.create({
 
   //   elevation: 5,
   // },
+  iconLost: {
+    color: '#D20A46',
+    marginHorizontal: 5
+  },
+  iconWon: {
+    color: 'green',
+    marginHorizontal: 5
+  },
+  cash: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   nameView: {
     borderTopRightRadius: 10,
     borderTopLeftRadius: 10,
@@ -100,6 +116,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#F8F8FA',
     fontFamily: 'Roboto',
+    textTransform: 'uppercase',
     paddingVertical: 5,
     marginVertical: 5,
     height: 30,
@@ -112,15 +129,15 @@ const styles = StyleSheet.create({
     borderLeftColor: '#E4E4E4',
     borderRightWidth: 1,
     borderRightColor: '#E4E4E4',
-    alignItems:'center',
+    alignItems: 'center',
     justifyContent: 'center'
   },
   match: {
     width: '100%',
     textAlign: 'center',
-    fontFamily: 'Roboto',
-    fontWeight: 'bold',
-    fontSize: 14,
+    fontFamily: 'Koulen',
+    // fontWeight: 'bold',
+    fontSize: 16,
   },
   bet: {
     // backgroundColor: 'yellow',
@@ -137,19 +154,23 @@ const styles = StyleSheet.create({
     borderRightColor: '#E4E4E4',
   },
   betAmountLost: {
-    fontSize: 14,
-    color: '#D20A46'
+    fontSize: 17,
+    fontWeight: '500',
+    // color: '#D20A46'
   },
   betAmountWon: {
-    fontSize: 14,
-    color: 'green'
+    fontSize: 17,
+    fontWeight: '500',
+    // color: 'green'
   },
   betResultLost: {
     fontSize: 14,
+    fontWeight: '700',
     color: '#D20A46'
   },
   betResultWon: {
     fontSize: 14,
+    fontWeight: '700',
     color: 'green'
   },
   bgStyle: {
