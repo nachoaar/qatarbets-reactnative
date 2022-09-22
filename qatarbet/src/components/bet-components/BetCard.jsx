@@ -3,8 +3,6 @@ import { Text, View, StyleSheet, TouchableWithoutFeedback } from 'react-native'
 import BetModal from './BetModal';
 import { useState } from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { TouchableHighlight } from 'react-native-gesture-handler';
-
 
 export default function BetCard({ bets }) {
 
@@ -75,23 +73,11 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   spacing: {
-    // backgroundColor: 'yellow',
     flex: 1,
     paddingHorizontal: 5,
     borderTopRightRadius: 10,
     borderTopLeftRadius: 10,
   },
-  // shadow: {
-  //   shadowColor: "#000",
-  //   shadowOffset: {
-  //     width: 0,
-  //     height: 2,
-  //   },
-  //   shadowOpacity: 0.25,
-  //   shadowRadius: 3.84,
-
-  //   elevation: 5,
-  // },
   iconLost: {
     color: '#D20A46',
     marginHorizontal: 5
@@ -111,7 +97,6 @@ const styles = StyleSheet.create({
     height: 40,
   },
   username: {
-    // height: 40,
     width: '100%',
     textAlign: 'center',
     color: '#F8F8FA',
@@ -136,11 +121,9 @@ const styles = StyleSheet.create({
     width: '100%',
     textAlign: 'center',
     fontFamily: 'Koulen',
-    // fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: 14,
   },
   bet: {
-    // backgroundColor: 'yellow',
     height: 40,
     width: '100%',
     flexDirection: 'row',
@@ -154,23 +137,17 @@ const styles = StyleSheet.create({
     borderRightColor: '#E4E4E4',
   },
   betAmountLost: {
-    fontSize: 17,
-    fontWeight: '500',
-    // color: '#D20A46'
+    fontSize: 14,
   },
   betAmountWon: {
-    fontSize: 17,
-    fontWeight: '500',
-    // color: 'green'
+    fontSize: 14,
   },
   betResultLost: {
     fontSize: 14,
-    fontWeight: '700',
     color: '#D20A46'
   },
   betResultWon: {
     fontSize: 14,
-    fontWeight: '700',
     color: 'green'
   },
   bgStyle: {

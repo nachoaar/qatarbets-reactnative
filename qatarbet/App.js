@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-
 import TabNavigation from './src/navigation/TabNavigation';
 
 import { Provider } from 'react-redux';
@@ -23,8 +22,6 @@ export default function App() {
 
     return (
       <View style={styles.container}>
-        {/* <StackNavigation /> */}
-        {/* Dejo TabNavigation comentado para poder ir trabajando mientras se desarrolla el login */}
         <TabNavigation />
       </View>
     )

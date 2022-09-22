@@ -105,6 +105,8 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     textAlign: 'center',
-    color: '#FF003F'
+    color: '#FF003F',
+    fontFamily: 'Roboto',
+    fontWeight: 'bold'
   }
 })

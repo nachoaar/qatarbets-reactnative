@@ -63,10 +63,6 @@ export default function BetModal(props) {
                 <GraphBet
                   bets={bets}
                   userId={props.userId}
-                  // home_group_points={props.home_group_points}
-                  // home_code={props.home_code}
-                  // away_group_points={props.away_group_points}
-                  // away_code={props.away_code}
                 />
               </View>
             </ScrollView>

@@ -56,10 +56,6 @@ export default function GamblerModal(props) {
                 <GraphBet
                   bets={bets}
                   userId={props.id}
-                  // home_group_points={props.home_group_points}
-                  // home_code={props.home_code}
-                  // away_group_points={props.away_group_points}
-                  // away_code={props.away_code}
                 />
               </View>
             </ScrollView>

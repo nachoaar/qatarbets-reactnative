@@ -9,7 +9,6 @@ export const getMatches = () => {
         const apiMostBet = await axios.get('https://qatarbets-backend-production.up.railway.app/fixture/get');
         const apiMostBetMatches = apiMostBet.data
         dispatch(getMatch(apiMostBetMatches))
-        // console.log(apiMostBetMatches);
     } catch (error) {
         console.error(error);
     }
