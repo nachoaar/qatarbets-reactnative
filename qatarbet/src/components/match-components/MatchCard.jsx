@@ -37,7 +37,7 @@ export default function MatchCard(props) {
                 <Text style={{fontFamily: 'Koulen', fontSize: 14,}}>{`${props.home_team} vs ${props.away_team}`}</Text>
               </View>
               <View style={styles.status}>
-                <Text>{props.status}</Text>
+                <Text style={{color: props.status === 'Finished' ? 'green' : '#D20A46'}}>{props.status}</Text>
               </View>
             </View>
           </View>
